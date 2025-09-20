@@ -1,16 +1,113 @@
-bruegge2004object:
-  type: book
-  title: Object Oriented Software Engineering Using UML, Patterns, and Java
+article:
+  type: article
+  title: Effects of Task Load and Cognitive Abilities on Performance and Subjective Mental Workload in a Tracking Task
   author:
-    - Bruegge, Bernd
-    - Dutoit, Allen H
-  date: 2009
-  publisher: Prentice Hall
+  - Valdehita, Susana
+  - Ramiro, Eva
+  - López-Higes, Ramón
+  - García, Jesús
+  date: 2012-10
+  page-range: 986-995
+  serial-number:
+    doi: 10.6018/analesps.28.3.156201
+  parent:
+    type: periodical
+    title: Anales de Psicologia
+    volume: 28
+molichImprovingHumanComputer:
+  type: article
+  title: Improving a {Human- Computer Dialogue}
+  author:
+  - Molich, Rolf
+  - Nielsen, Jakob
+  parent:
+    type: periodical
+murilloEmpoweringInterfacesSystem2014:
+  type: article
+  title:
+    value: 'Empowering {Interfaces} for {System Administrators}: {Keeping} the {Command Line} in {Mind} When {Designing GUIs}'
+    short: Empowering {Interfaces} for {System Administrators}
+  author:
+  - Murillo, Sandra R.
+  - Sánchez, J. Alfredo
+  date: 2014-09-10
+  page-range: 1-4
+  url:
+    value: https://dl.acm.org/doi/10.1145/2662253.2662300
+    date: 2025-08-19
+  serial-number:
+    doi: 10.1145/2662253.2662300
+    isbn: 978-1-4503-2880-7
+  abstract: In terms of usability, network management software based on command line interfaces (CLI) is efficient but error prone. With GUIs, a new generation of security tools emerged and were adopted by young system administrators. Though usability has improved, it has been argued that CLI-based software tends to support better user performance. Incorporating CLI advantages into graphical versions (or vice versa) remains a challenge. This paper presents a quantitative study regarding system administrators’ practices and preferences regarding GUIs and CLIs and reports on initial results of a usability evaluation performed on proposed interfaces that are informed by our study. Personalization features are particularly appreciated by network administrators, which suggests possible strategies for graphical interface designs that improve user experience while maintaining the positive aspects of CLI-based software.
+  parent:
+  - type: proceedings
+    title: Proceedings of the {XV International Conference} on {Human Computer Interaction}
+    publisher:
+      name: ACM
+      location: Puerto de la Cruz Tenerife Spain
+  - type: conference
+    title: 'Interacción ''14: {XV International Conference} on {Human Computer Interaction}'
+roestNextStepHintGeneration2024:
+  type: article
+  title: Next-{Step Hint Generation} for {Introductory Programming Using Large Language Models}
+  author:
+  - Roest, Lianne
+  - Keuning, Hieke
+  - Jeuring, Johan
+  date: 2024-01-29
+  page-range: 144-153
+  url:
+    value: https://dl.acm.org/doi/10.1145/3636243.3636259
+    date: 2025-08-21
+  serial-number:
+    doi: 10.1145/3636243.3636259
+    isbn: 979-8-4007-1619-5
+  abstract: Large Language Models possess skills such as answering questions, writing essays or solving programming exercises. Since these models are easily accessible, researchers have investigated their capabilities and risks for programming education. This work explores how LLMs can contribute to programming education by supporting students with automated next-step hints. We investigate prompt practices that lead to effective next-step hints and use these insights to build our StAP-tutor. We evaluate this tutor by conducting an experiment with students, and performing expert assessments. Our findings show that most LLM-generated feedback messages describe one specific next step and are personalised to the student’s code and approach. However, the hints may contain misleading information and lack sufficient detail when students approach the end of the assignment. This work demonstrates the potential for LLM-generated feedback, but further research is required to explore its practical implementation.
+  parent:
+  - type: proceedings
+    title: Proceedings of the 26th {Australasian Computing Education Conference}
+    publisher:
+      name: ACM
+      location: Sydney NSW Australia
+  - type: conference
+    title: '{ACE} 2024: {Australian Computing Education Conference}'
+sampathAccessibilityCommandLine2021:
+  type: article
+  title: Accessibility of {Command Line Interfaces}
+  author:
+  - Sampath, Harini
+  - Merrick, Alice
+  - Macvean, Andrew
+  date: 2021-05-06
+  page-range: 1-10
+  url:
+    value: https://dl.acm.org/doi/10.1145/3411764.3445544
+    date: 2025-08-19
+  serial-number:
+    doi: 10.1145/3411764.3445544
+    isbn: 978-1-4503-8096-6
+  abstract: Command-line interfaces (CLIs) remain a popular tool among developers and system administrators. Since CLIs are text-based interfaces, they are sometimes considered accessible alternatives to predominantly visual developer tools like IDEs. However, there is no systematic evaluation of the accessibility of CLIs in the literature. In this paper, we describe two studies with 12 developers on their experience of using CLIs with screen readers. Our fndings show that CLIs have their own set of accessibility issues - the most important being CLIs are unstructured text interfaces. Based on our results, we provide a set of recommendations for improving the accessibility of command-line interfaces.
+  parent:
+  - type: proceedings
+    title: Proceedings of the 2021 {CHI Conference} on {Human Factors} in {Computing Systems}
+    publisher:
+      name: ACM
+      location: Yokohama Japan
+  - type: conference
+    title: '{CHI} ''21: {CHI Conference} on {Human Factors} in {Computing Systems}'
+TheiaIDEAINative:
+  type: web
+  title: Theia {IDE} – {AI-Native Open-Source Cloud} and {Desktop IDE}
+  url:
+    value: https://theia-ide.org/
+    date: 2025-09-04
+WarpAgenticDevelopment:
+  type: web
+  title:
+    value: 'Warp: {The Agentic Development Environment}'
+    short: Warp
+  url:
+    value: https://shy-signposts-692181.framer.app/
+    date: 2025-09-09
+  abstract: Warp is an AI agent platform that lets you run multiple agents in parallel to complete any development task.
 
-mustermann2020design:
-  type: thesis
-  title: "Design and Implementation of a Scalable Microservice Architecture"
-  author: Max Mustermann
-  genre: Master Thesis
-  publisher: Technical University of Munich
-  date: 2020 
