@@ -15,15 +15,16 @@ Error messages are often cryptic, requiring specialized knowledge to interpret, 
 This is problematic for students with less experience and interdisciplinary students, who may be overwhelmed by the volume of work and discouraged by unclear feedback.
 
 Users must memorize a wide range of commands with tool-specific syntax, flags, and parameters that vary across operating systems.
-Developers must mentally transition between the IDE's graphical paradigms and the terminal's text-based interaction model, creating additional cognitive load, leading to deterioration in performance @article.
+Combined with the mental transition between the IDE's graphical paradigms and the terminal's text-based interaction model, additional cognitive load is created, leading to a deterioration in performance @article.
 Unlike graphical interfaces with visible affordances, terminal capabilities remain hidden until explicitly learned or discovered through documentation.
-Terminals provide minimal progress indicators and often fail to clearly communicate an operations' success or failure status.
+While the command line allows developers to improve the usability with customization, this is usually only done by more experienced users @schroderEmpiricalInvestigationCommandline2022.
 
 These shortcomings directly conflict with Jacob Nielsen's usability heuristics @molichImprovingHumanComputer, which define fundamental principles for designing user-friendly systems. 
 - Match Between System and the Real World (Heuristic 2): Instead of using familiar language, terminals rely heavily on domain-specific language, making them inaccessible to novice programmers. 
 - Consistency and Standards (Heuristic 4): While modern UIs provide consistent cues, terminals lack affordances such as clear syntax highlighting or standardized feedback.
 - Help User Recognize, Diagnose, and Recover from Errors (Heuristic 9): Error handling in terminals is minimal. Users are often left stranded with vague or overly technical error messages, forcing them to consult documentation and interrupt their workflow.
  
-Existing Terminal Emulators, such as Warp @WarpAgenticDevelopment, attempt to address these problems with natural language input to execute commands and automatic problem solving depending on the last command output.
+Existing Terminal Emulators, such as Warp #footnote[https://warp.dev], attempt to address these problems with natural language input to execute commands and automatic problem solving depending on the last command output.
 However, by directly solving issues for the user, these systems bypass the opportunity for students to develop transferable problem-solving skills, leaving them unprepared for contexts where such tools fail or are unavailable.  
+The lack of IDE integration also forces developers to constantly switch between two environments, disrupting workflow efficiency.
 

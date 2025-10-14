@@ -16,24 +16,23 @@ The proposed system will be implemented in these steps:
 1. Intelligently process command output
 2. Explain errors with suggested remediation steps
 3. Enable natural language input
-4. Switch between different modes of transparency and flexibility
+4. Switch between different modes of assistance (teaching and problem solving) 
 
 == Intelligently process command output 
 The terminal will automatically generate a concise summary of each command’s output in the first stage.
 The summary highlights key information such as error messages, warnings, or success indicators while filtering out redundant or verbose details.
 To preserve transparency, the summary will appear directly beneath the original command output and will be clearly distinguished through visual cues (e.g., different styling or background shading).
-This functionality will be implemented through a dedicated AI prompt template instructing the model to parse, filter, and a summarize terminal output.
-A toggle option will allow users to switch between full raw output and summarized view. By default, both the raw and summarized outputs are shown, enabling students to compare the two and learn which elements of the terminal output are most relevant for problem-solving.
+This functionality will be implemented through a dedicated AI prompt template instructing the model to parse, filter, and summarize the terminal output.
+A toggle option will allow users to switch between full raw output and a summarized view. By default, both the raw and summarized outputs are shown, enabling students to compare the two and learn which elements of the terminal output are most relevant for problem-solving.
 
 This feature helps students better understand the output of compilers and linters by filtering out verbosity that can be more confusing than helpful, particularly for students still learning programming.
 
 == Explain errors with suggested remediation steps
 In the second stage, the terminal will automatically suggest actions to solve the errors when an error is detected in the terminal output.
-The goal is not to expose the exercise solution, while still providing enough information to help with the issue.
-A prompt file will be created that prompts the AI model to summarize the error's output and providing hints to the fix of the error.
-The prompt will prevent the solution from leaking to the user. 
-A button will be added that opens the relevant files that the user needs to access inorder to solve the error.
-
+The goal is to guide the student to solve the issue and to prevent solving the issue directly, by exposing the exercise solution.
+A prompt file will be created that prompts the AI model to summarize the error's output and provide hints for fixing the error.
+Hints must not reveal the whole exercise solution, but instead describe the type of fix required (e.g., missing semicolon).
+Dynamic UI components will adapt to the context: for example, buttons to open the relevant file, highlight the faulty line, or link the documentation. 
 This feature helps students to understand how to solve issues and reduce friction during solution finding. 
 
 == Enable natural language input
@@ -52,5 +51,12 @@ Different assistance modes determine the degree of support provided during error
 At lower levels, the tool provides minimal hints, while at higher levels, the tool offers richer guidance.
 
 This feature allows the system to be transparent so that instructors can keep the abstraction level low, to nudge students to learn how to act when this tool is not available, while developers use a higher abstraction level to solve errors with less distraction.
-The tool also becomes more flexible, as instructors can lower the assistance level that the tool provides to enhance the learning journey of students and professional developers can increase the assistance level to solve issues more quickly. 
+The tool also becomes more flexible, as instructors can lower the assistance level that the tool provides to enhance the learning journey of students, and professional developers can increase the assistance level to solve issues more quickly. 
+
+The activity diagram depicted in @activity visualizes the interaction flow related to error explanation. It depicts different behaviours of the system depending on the configuration of abstraction and assistance.
+
+#figure(
+  image("../../figures/activitydiagram.drawio.svg"),
+  caption: [Activity diagram of the terminal interaction flow during output summary and error remediation.]
+) <activity>
 

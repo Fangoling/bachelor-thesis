@@ -32,22 +32,24 @@ To ensure a structured and timely completion of the project, the following sched
 
 #strong("Milestone 4. Natural Language Input. [Week 7-10, 4 Weeks]")
   
-  A developer can interact with the terminal with natural language queries. The output will be explained by a LLM and a student can directly execut it in the terminal. The deliverables include:
+  A developer can interact with the terminal with natural language queries. The output will be explained by a LLM, and a student can directly execute it in the terminal. The deliverables include:
   - Extend Theia's terminal with a side panel with a chat-style input interface.
   - Create an AI prompt template that parses inputs and generates terminal commands with corresponding explanations.
   - Integrate the generated command into the side panel as a structured block (command + explanation).
   - Provide actions to insert it into the terminal or execute the command directly.
 
-#strong("Milestone 4. Allow changing abstraction and assistance levels. [Week 11-12, 2 Weeks]")
+#strong("Milestone 5. Allow changing abstraction and assistance levels. [Week 11-12, 2 Weeks]")
 
   A developer will be able to choose between different abstraction and assistance levels. The system will support multiple prompt templates for error remediation. The deliverables include: 
-  - Extend Theia's settings with a setting to switch between two modes of abstraction and assistance
+  - Extend Theia's settings with a setting to switch between two modes of abstraction and assistance.
+  - Restrict change of modes to users with the instructor role in the education mode.
+  - Store and apply the prompt files on the server side.
   - Design and implement modular AI prompt templates that vary in verbosity and guidance (e.g., minimal hints, guided explanation, detailed remediation).
 
-#strong("Milestone 5. User testing. [Week 13-15] 3 Weeks]")
+#strong("Milestone 6. User testing. [Week 13-15] 3 Weeks]")
 
   Prepare and execute a survey on this system in the context of a Java exercise during a tutorial. Test students with the terminal assistance enabled and disabled. The deliverables include:
-  - Design a java exercise with medium difficulty that covers representative use cases of the tool, such as error handling.
+  - Design a Java exercise with medium difficulty that covers representative use cases of the tool, such as error handling.
   - Prepare a survey with two groups, one with terminal assistance and one without.
   - Collect both quantitative (time spent solving errors, number of errors solved) and qualitative data (perceived mental load).
   - Analyze user feedback for statements that validate or challenge the system's effectiveness. 
