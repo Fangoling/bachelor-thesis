@@ -10,21 +10,10 @@
   - Present the negative consequences in detail 
 ]
 
-Despite their importance, terminals in modern IDEs suffer significant usability challenges that hinder developer productivity and create steep learning curves for newcomers.
-Error messages are often cryptic, requiring specialized knowledge to interpret, which prolongs debugging and increases frustration for developers. 
-This is problematic for students with less experience and interdisciplinary students, who may be overwhelmed by the volume of work and discouraged by unclear feedback.
+Despite their importance, terminals in modern IDEs suffer from usability challenges, as error messages are often cryptic, requiring specialized knowledge to interpret, which prolongs debugging and increases frustration for developers @beckerEffectiveApproachEnhancing2016.
+This is problematic for students with less experience and those from interdisciplinary backgrounds, who may be overwhelmed by the volume of work and discouraged by unclear feedback.
 
-Users must memorize a wide range of commands with tool-specific syntax, flags, and parameters that vary across operating systems.
-Combined with the mental transition between the IDE's graphical paradigms and the terminal's text-based interaction model, additional cognitive load is created, leading to a deterioration in performance @article.
-Unlike graphical interfaces with visible affordances, terminal capabilities remain hidden until explicitly learned or discovered through documentation.
-While the command line allows developers to improve the usability with customization, this is usually only done by more experienced users @schroderEmpiricalInvestigationCommandline2022.
+Another usability issue of the terminal is that developers need to memorize a wide range of commands with tool-specific syntax, flags, and parameters that vary across operating systems, which increases the cognitive load on students and reduces their performance @article.
+And unlike graphical interfaces with visible affordances, terminal capabilities remain hidden until explicitly learned or discovered through documentation. #footnote[UX Stackexchange: Why are terminal consoles still used?]
 
-These shortcomings directly conflict with Jacob Nielsen's usability heuristics @molichImprovingHumanComputer, which define fundamental principles for designing user-friendly systems. 
-- Match Between System and the Real World (Heuristic 2): Instead of using familiar language, terminals rely heavily on domain-specific language, making them inaccessible to novice programmers. 
-- Consistency and Standards (Heuristic 4): While modern UIs provide consistent cues, terminals lack affordances such as clear syntax highlighting or standardized feedback.
-- Help User Recognize, Diagnose, and Recover from Errors (Heuristic 9): Error handling in terminals is minimal. Users are often left stranded with vague or overly technical error messages, forcing them to consult documentation and interrupt their workflow.
- 
-Existing Terminal Emulators, such as Warp #footnote[https://warp.dev], attempt to address these problems with natural language input to execute commands and automatic problem solving depending on the last command output.
-However, by directly solving issues for the user, these systems bypass the opportunity for students to develop transferable problem-solving skills, leaving them unprepared for contexts where such tools fail or are unavailable.  
-The lack of IDE integration also forces developers to constantly switch between two environments, disrupting workflow efficiency.
-
+The lack of IDE integration also forces developers to constantly switch between the terminal and the IDE application, disrupting workflow efficiency @abadTaskInterruptionSoftware2018.

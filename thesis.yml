@@ -1,3 +1,22 @@
+abadTaskInterruptionSoftware2018:
+  type: web
+  title:
+    value: 'Task {Interruption} in {Software Development Projects}: {What Makes} Some {Interruptions More Disruptive} than {Others}?'
+    short: Task {Interruption} in {Software Development Projects}
+  author:
+  - Abad, Zahra Shakeri Hossein
+  - Karras, Oliver
+  - Schneider, Kurt
+  - Barker, Ken
+  - Bauer, Mike
+  date: 2018-05-15
+  url:
+    value: http://arxiv.org/abs/1805.05508
+    date: 2025-10-29
+  serial-number:
+    arxiv: '1805.05508'
+    doi: 10.48550/arXiv.1805.05508
+  abstract: Multitasking has always been an inherent part of software development and is known as the primary source of interruptions due to task switching in software development teams. Developing software involves a mix of analytical and creative work, and requires a significant load on brain functions, such as working memory and decision making. Thus, task switching in the context of software development imposes a cognitive load that causes software developers to lose focus and concentration while working thereby taking a toll on productivity. To investigate the disruptiveness of task switching and interruptions in software development projects, and to understand the reasons for and perceptions of the disruptiveness of task switching we used a mixed-methods approach including a longitudinal data analysis on 4,910 recorded tasks of 17 professional software developers, and a survey of 132 software developers. We found that, compared to task-specific factors (e.g. priority, level, and temporal stage), contextual factors such as interruption type (e.g. self/external), time of day, and task type and context are a more potent determinant of task switching disruptiveness in software development tasks. Furthermore, while most survey respondents believe external interruptions are more disruptive than self-interruptions, the results of our retrospective analysis reveals otherwise. We found that self-interruptions (i.e. voluntary task switchings) are more disruptive than external interruptions and have a negative effect on the performance of the interrupted tasks. Finally, we use the results of both studies to provide a set of comparative vulnerability and interaction pa erns which can be used as a mean to guide decision-making and forecasting the consequences of task switching in software development teams.
 article:
   type: article
   title: Effects of Task Load and Cognitive Abilities on Performance and Subjective Mental Workload in a Tracking Task
@@ -65,12 +84,13 @@ dengRACONTEURKnowledgeableInsightful2025:
       location: San Diego, CA, USA
   - type: conference
     title: Network and {Distributed System Security Symposium}
-molichImprovingHumanComputer:
+molichImprovingHumanComputer1994:
   type: article
   title: Improving a {Human- Computer Dialogue}
   author:
   - Molich, Rolf
   - Nielsen, Jakob
+  date: 1994
   parent:
     type: periodical
 murilloEmpoweringInterfacesSystem2014:
@@ -98,6 +118,29 @@ murilloEmpoweringInterfacesSystem2014:
       location: Puerto de la Cruz Tenerife Spain
   - type: conference
     title: 'Interacción ''14: {XV International Conference} on {Human Computer Interaction}'
+pankiewiczNavigatingCompilerErrors2024:
+  type: article
+  title: Navigating {Compiler Errors} with {AI Assistance} - {A Study} of {GPT Hints} in an {Introductory Programming Course}
+  author:
+  - Pankiewicz, Maciej
+  - Baker, Ryan S.
+  date: 2024-07-03
+  page-range: 94-100
+  url:
+    value: https://dl.acm.org/doi/10.1145/3649217.3653608
+    date: 2025-10-27
+  serial-number:
+    doi: 10.1145/3649217.3653608
+    isbn: 979-8-4007-0600-4
+  abstract: We examined the efficacy of AI-assisted learning in an introductory programming course at the university level by using a GPT-4 model to generate personalized hints for compiler errors within a platform for automated assessment of programming assignments. The control group had no access to GPT hints. In the experimental condition GPT hints were provided when a compiler error was detected, for the first half of the problems in each module. For the latter half of the module, hints were disabled. Students highly rated the usefulness of GPT hints. In affect surveys, the experimental group reported significantly higher levels of focus and lower levels of confrustion (confusion and frustration) than the control group. For the six most commonly occurring error types we observed mixed results in terms of performance when access to GPT hints was enabled for the experimental group. However, in the absence of GPT hints, the experimental group's performance surpassed the control group for five out of the six error types.
+  parent:
+  - type: proceedings
+    title: Proceedings of the 2024 on {Innovation} and {Technology} in {Computer Science Education V}. 1
+    publisher:
+      name: ACM
+      location: Milan Italy
+  - type: conference
+    title: '{ITiCSE} 2024: {Innovation} and {Technology} in {Computer Science Education}'
 roestNextStepHintGeneration2024:
   type: article
   title: Next-{Step Hint Generation} for {Introductory Programming Using Large Language Models}

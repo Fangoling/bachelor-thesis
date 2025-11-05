@@ -12,51 +12,47 @@
 
 Building on the idea of improving the usability of terminals, this thesis seeks to address current limitations by proposing a comprehensive plan to implement AI assistance into the terminal of the Theia IDE.
 
-The proposed system will be implemented in these steps:
+We will implement the proposed statement in these steps:
 1. Intelligently process command output
 2. Explain errors with suggested remediation steps
 3. Enable natural language input
-4. Switch between different modes of assistance (teaching and problem solving) 
+4. Switch between different levels of abstraction and assistance
 
-== Intelligently process command output 
-The terminal will automatically generate a concise summary of each command’s output in the first stage.
-The summary highlights key information such as error messages, warnings, or success indicators while filtering out redundant or verbose details.
-To preserve transparency, the summary will appear directly beneath the original command output and will be clearly distinguished through visual cues (e.g., different styling or background shading).
-This functionality will be implemented through a dedicated AI prompt template instructing the model to parse, filter, and summarize the terminal output.
-A toggle option will allow users to switch between full raw output and a summarized view. By default, both the raw and summarized outputs are shown, enabling students to compare the two and learn which elements of the terminal output are most relevant for problem-solving.
+== Intelligently process command output
+In the first stage, we implement a Theia extension that automatically generates a compact summary for each build and command output.
+Each summary highlights key information such as error messages, warnings, or success indicators while filtering out redundant or verbose details.
+The summary appears directly below the original output and uses visual cues to preserve full transparency.
+We implement an AI prompt template that guides a Terminal Summary Agent to summarize the terminal output.
 
-This feature helps students better understand the output of compilers and linters by filtering out verbosity that can be more confusing than helpful, particularly for students still learning programming.
+By breaking down complex outputs into digestible summaries, this feature helps students focus on relevant information and better understand the output of compilers and linters. 
 
 == Explain errors with suggested remediation steps
-In the second stage, the terminal will automatically suggest actions to solve the errors when an error is detected in the terminal output.
-The goal is to guide the student to solve the issue and to prevent solving the issue directly, by exposing the exercise solution.
-A prompt file will be created that prompts the AI model to summarize the error's output and provide hints for fixing the error.
-Hints must not reveal the whole exercise solution, but instead describe the type of fix required (e.g., missing semicolon).
-Dynamic UI components will adapt to the context: for example, buttons to open the relevant file, highlight the faulty line, or link the documentation. 
-This feature helps students to understand how to solve issues and reduce friction during solution finding. 
+In the second stage, we extend the Theia extension to automatically detect errors in the output. The system displays each detected error in a structured format, along with guidance for resolution. 
+The goal is to support students in understanding the issue without revealing the complete solution to an exercise.
+
+We will extend the prompt template for the Terminal Summary Agent to identify and summarize the error's output. It provides hints that describe the nature of the error rather than giving direct solutions.
+The system displays each detected error as a structured item, including the file location, a description of the error, and a general hint for remediation. An "Open File" button navigates the user to the corresponding file in the IDE editor window and highlights the faulty line.
 
 == Enable natural language input
-In this stage, the terminal of the Theia IDE will be extended with a split view.
-A dedicated side panel provides a natural language interface where users can formulate interactions with the terminal in plain text.
-An AI agent, preconfigured to only generate valid terminal commands, translates these inputs into executable commands accompanied by short explanations of their function.
-Generated commands are displayed in the side panel as structured blocks, allowing users to insert them into the terminal for review or execute them directly.
+This stage extends the terminal of the Theia IDE with a side panel that allows users to interact with the terminal using natural language.
+A command suggestion agent, prompted to only generate valid terminal commands, translates user inputs into executable commands accompanied by short explanations of their function.
+The system displays the generated commands in the side panel, along with a brief explanation of their function. The component allows the user to copy the commands, insert them into the terminal for review, or execute them directly.
 
 This feature helps developers to more easily interact with the terminal by reducing the mental load of recalling terminal syntax, flags, and parameters.
+It also reduces context switching by eliminating the need to consult external documentation for command usage.
 
-== Switch between different modes of abstraction and assistance
-An option will be integrated with Theia IDE, which allows switching between different modes of abstraction and assistance.
-Adjusting the level of abstraction will impact how much of the original terminal output is displayed versus summarized.
-Each mode introduces gradual changes rather than abrupt shifts, ensuring that the user experience feels natural.
-Different assistance modes determine the degree of support provided during error remediation.
-At lower levels, the tool provides minimal hints, while at higher levels, the tool offers richer guidance.
+== Switch between different levels of abstraction and assistance
+We integrate a configuration setting with Theia IDE that exposes two controls: an "abstraction level" and an "assistance level".
+Adjusting the abstraction level impacts how much of the original terminal output is displayed (example states: Only Terminal Output, Both, Only Summary), while adjusting the assistance level determines the level of detail in the error remediation steps (example states: Hint, Solution).
+Each level introduces gradual changes to ensure a natural user experience.
 
-This feature allows the system to be transparent so that instructors can keep the abstraction level low, to nudge students to learn how to act when this tool is not available, while developers use a higher abstraction level to solve errors with less distraction.
-The tool also becomes more flexible, as instructors can lower the assistance level that the tool provides to enhance the learning journey of students, and professional developers can increase the assistance level to solve issues more quickly. 
+To maintain transparency, instructors can choose a low abstraction level to encourage independent problem-solving, while developers can choose a higher abstraction level for reduced distraction.
+Similarly, this configuration provides flexibility, as instructors can lower the assistance level to foster learning, and professional developers can increase the assistance level to speed up debugging.
 
-The activity diagram depicted in @activity visualizes the interaction flow related to error explanation. It depicts different behaviours of the system depending on the configuration of abstraction and assistance.
+The activity diagram in @activity visualizes the system's interaction flow during output summarization and error remediation. It depicts different behaviours of the system depending on the configuration of abstraction and assistance.
 
 #figure(
-  image("../../figures/activitydiagram.drawio.svg"),
+  image("../../figures/activitydiagram4.drawio.svg"),
   caption: [Activity diagram of the terminal interaction flow during output summary and error remediation.]
 ) <activity>
 
