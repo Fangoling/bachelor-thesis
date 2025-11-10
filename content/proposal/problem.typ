@@ -14,6 +14,8 @@ Despite their importance, terminals in modern IDEs suffer from usability challen
 This is problematic for students with less experience and those from interdisciplinary backgrounds, who may be overwhelmed by the volume of work and discouraged by unclear feedback.
 
 Another usability issue of the terminal is that developers need to memorize a wide range of commands with tool-specific syntax, flags, and parameters that vary across operating systems, which increases the cognitive load on students and reduces their performance @article.
-And unlike graphical interfaces with visible affordances, terminal capabilities remain hidden until explicitly learned or discovered through documentation. #footnote[UX Stackexchange: Why are terminal consoles still used?]
+And unlike graphical interfaces with visible affordances, terminal capabilities remain hidden until explicitly learned or discovered through documentation. #footnote[UX Stackexchange: Why are terminal consoles still used?] This steep learning curve limits the accessibility of terminal and makes them less intuitive for students.
 
-The lack of IDE integration also forces developers to constantly switch between the terminal and the IDE application, disrupting workflow efficiency @abadTaskInterruptionSoftware2018.
+The limited integration between the terminal and the IDE also disrupts workflow efficiency.
+Developers must constantly switch between command-line interactions and graphical interfaces, breaking concentration and task continuity @abadTaskInterruptionSoftware2018.
+

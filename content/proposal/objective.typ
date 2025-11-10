@@ -22,7 +22,6 @@ We will implement the proposed statement in these steps:
 In the first stage, we implement a Theia extension that automatically generates a compact summary for each build and command output.
 Each summary highlights key information such as error messages, warnings, or success indicators while filtering out redundant or verbose details.
 The summary appears directly below the original output and uses visual cues to preserve full transparency.
-We implement an AI prompt template that guides a Terminal Summary Agent to summarize the terminal output.
 
 By breaking down complex outputs into digestible summaries, this feature helps students focus on relevant information and better understand the output of compilers and linters. 
 
@@ -30,8 +29,8 @@ By breaking down complex outputs into digestible summaries, this feature helps s
 In the second stage, we extend the Theia extension to automatically detect errors in the output. The system displays each detected error in a structured format, along with guidance for resolution. 
 The goal is to support students in understanding the issue without revealing the complete solution to an exercise.
 
-We will extend the prompt template for the Terminal Summary Agent to identify and summarize the error's output. It provides hints that describe the nature of the error rather than giving direct solutions.
-The system displays each detected error as a structured item, including the file location, a description of the error, and a general hint for remediation. An "Open File" button navigates the user to the corresponding file in the IDE editor window and highlights the faulty line.
+The system displays each detected error as a structured item, including the file location, a description of the error, and a general hint for remediation.
+An "Open File" button navigates the user to the corresponding file in the IDE editor window and highlights the faulty line, while a "Show Hint" button reveals a more detailed hint to guide the student toward resolving the error independently.
 
 == Enable natural language input
 This stage extends the terminal of the Theia IDE with a side panel that allows users to interact with the terminal using natural language.
@@ -49,10 +48,11 @@ Each level introduces gradual changes to ensure a natural user experience.
 To maintain transparency, instructors can choose a low abstraction level to encourage independent problem-solving, while developers can choose a higher abstraction level for reduced distraction.
 Similarly, this configuration provides flexibility, as instructors can lower the assistance level to foster learning, and professional developers can increase the assistance level to speed up debugging.
 
-The activity diagram in @activity visualizes the system's interaction flow during output summarization and error remediation. It depicts different behaviours of the system depending on the configuration of abstraction and assistance.
+The activity diagram in @activity visualizes the system's interaction flow during output summarization and error remediation.
+The diagram will be used as a reference for the implementation. It depicts different behaviours of the system depending on the configuration of abstraction and assistance.
 
 #figure(
-  image("../../figures/activitydiagram4.drawio.svg"),
+  image("../../figures/activitydiagram3.drawio.svg"),
   caption: [Activity diagram of the terminal interaction flow during output summary and error remediation.]
 ) <activity>
 

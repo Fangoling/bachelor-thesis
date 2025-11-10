@@ -25,10 +25,9 @@ To ensure a structured and timely completion of the project, the following sched
 #strong("Milestone 2. Error remediation. [Week 4-6, 3 Weeks]")
 
   A student can get an error summary in the form of structured error items in the case of an error output. The deliverables include:
-  - Extend the Terminal Summary Extension to identify and extract errors from compiler and linter outputs.
-  - Create a robust AI prompt template that generates structured error items
-  - Integrate the output of the error summary into the Terminal Summary Extension by displaying it under the command output.
-  - Provide interactive actions (e.g., open related file in an editor window) that the student can trigger directly in the component.
+  - Extend the AI agent and prompt template of Milestone 1 to identify errors and generate structured error items.
+  - Display the output of the error summary within the summary component of the Terminal Summary Extension.
+  - Implement action to open related file in an editor window.
 
 #strong("Milestone 3. Allow changing abstraction and assistance levels. [Week 7-8, 2 Weeks]")
 
@@ -50,4 +49,4 @@ To ensure a structured and timely completion of the project, the following sched
   - Extend Theia's terminal with a side panel with a chat-style input interface.
   - Create an AI agent and an AI prompt template that parses inputs and generates terminal commands with corresponding explanations.
   - Integrate the generated command into the side panel as a structured block
-  - Provide actions to copy, insert it into the terminal or execute the command directly.
+  - Implement actions to copy, insert it into the terminal or execute the command directly.
