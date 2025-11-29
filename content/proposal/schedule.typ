@@ -12,24 +12,24 @@
 
 The following milestones will guide the implementation process to achieve the
 outlined objectives.
-The Bachelor's thesis starts on X and will be completed on X.
+The Bachelor's thesis starts on 01.12.2025 and will be completed on 01.04.2026.
 To ensure a structured and timely completion of the project, the following schedule is planned:
 
-#strong("Milestone 1. Intelligently process command output. [Week 1-3, 3 Weeks]")
+#strong("Milestone 1. Intelligently process command output. [Week 1-3, 3 Weeks] (Objective 4.1)")
 
   A student can see a concise summary of each terminal command output under the raw output with a clear visual distinction. The deliverables include:
   - Implement a Theia Terminal Summary Extension to process command outputs.
   - Add a component to display summaries beneath raw outputs.
   - Implement an AI agent and an AI prompt template to summarize command output.
 
-#strong("Milestone 2. Error remediation. [Week 4-6, 3 Weeks]")
+#strong("Milestone 2. Error remediation. [Week 4-6, 3 Weeks] (Objective 4.2)")
 
   A student can get an error summary in the form of structured error items in the case of an error output. The deliverables include:
   - Extend the AI agent and prompt template of Milestone 1 to identify errors and generate structured error items.
   - Display the output of the error summary within the summary component of the Terminal Summary Extension.
-  - Implement action to open related file in an editor window.
+  - Implement an action to open related file in an editor window.
 
-#strong("Milestone 3. Allow changing abstraction and assistance levels. [Week 7-8, 2 Weeks]")
+#strong("Milestone 3. Allow changing abstraction and assistance levels. [Week 7-8, 2 Weeks] (Objective 4.4)")
 
   A developer will be able to choose between different abstraction and assistance levels. The system will support multiple prompt templates for error remediation. The deliverables include: 
   - Extend Theia's settings with a setting to switch between two modes of abstraction and assistance.
@@ -43,10 +43,10 @@ To ensure a structured and timely completion of the project, the following sched
   - Document feasible improvements and create a product backlog for out-of-scope features.
   
 
-#strong("Milestone 5. Natural Language Input. [Week 11-14, 4 Weeks]")
+#strong("Milestone 5. Natural Language Input. [Week 11-14, 4 Weeks] (Objective 4.3)")
   
   A developer can interact with the terminal with natural language queries. An AI agent will explain the output, and a student can directly execute it in the terminal. The deliverables include:
   - Extend Theia's terminal with a side panel with a chat-style input interface.
   - Create an AI agent and an AI prompt template that parses inputs and generates terminal commands with corresponding explanations.
-  - Integrate the generated command into the side panel as a structured block
+  - Integrate the generated command into the side panel as a structured block.
   - Implement actions to copy, insert it into the terminal or execute the command directly.

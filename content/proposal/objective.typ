@@ -12,7 +12,7 @@
 
 Building on the idea of improving the usability of terminals, this thesis seeks to address current limitations by proposing a comprehensive plan to implement AI assistance into the terminal of the Theia IDE.
 
-We will implement the proposed statement in these steps:
+We will implement the proposed system in these steps:
 1. Intelligently process command output
 2. Explain errors with suggested remediation steps
 3. Enable natural language input
@@ -49,7 +49,7 @@ To maintain transparency, instructors can choose a low abstraction level to enco
 Similarly, this configuration provides flexibility, as instructors can lower the assistance level to foster learning, and professional developers can increase the assistance level to speed up debugging.
 
 The activity diagram in @activity visualizes the system's interaction flow during output summarization and error remediation.
-The diagram will be used as a reference for the implementation. It depicts different behaviours of the system depending on the configuration of abstraction and assistance.
+The diagram will be used as a reference for the implementation. It depicts different behaviors of the system depending on the configuration of abstraction and assistance.
 
 #figure(
   image("../../figures/activitydiagram3.drawio.svg"),

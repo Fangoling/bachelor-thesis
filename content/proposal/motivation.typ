@@ -16,5 +16,5 @@ While prior research has explored using large language models to generate next-s
 By automatically summarizing and explaining the error output of compilers and linters, students can more quickly identify their mistakes and gain more explicit guidance on how to resolve them @pankiewiczNavigatingCompilerErrors2024.
 This feature also allows students to dedicate more time to solving the actual exercise rather than deciphering technical error messages, and reduces the occurrence of similar errors in the future @beckerEffectiveApproachEnhancing2016.
  
-Existing Terminal Emulators, such as Warp #footnote[https://warp.dev], attempt to address these problems with natural language input to execute commands and automatic problem solving depending on the last command output.
+Existing terminal emulators, such as Warp #footnote[https://warp.dev], attempt to address these problems with natural language input to execute commands and automatic problem solving depending on the last command output.
 However, by directly solving issues for the user, these systems bypass the opportunity for students to develop transferable problem-solving skills, leaving them unprepared for contexts where such tools fail or are unavailable.  
