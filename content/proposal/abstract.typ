@@ -9,7 +9,8 @@
 
 The terminal is a central tool in the workflow of developers, yet it often presents challenges due to its steep learning curve and overwhelming output.
 To address these issues, this work proposes an AI-assisted system to enhance terminal usability.
-We apply the approach on the Theia IDE, which features an integrated terminal.
-A large language model (LLM) processes outputs, such as those generated during a Java Build, to filter redundant information and highlight the key points necessary for problem-solving.
-The system additionally provides context-aware commands and natural language explanations of terminal operations, helping users work more efficiently without needing to consult external documentation. 
-While the primary focus lies on supporting students in educational settings, the concepts explored here also point towards benefits for professional developers' workflows.
+We implement the system within the Theia IDE, which features an integrated terminal. 
+
+The proposed system utilizes a large language model (LLM) to process outputs, such as those generated during a Java build, to summarize key information, explain errors with remediation hints, and suggest commands based on natural language input.
+By providing context-aware guidance and transparent explanation, the system reduces the need to consult external documentation. 
+While the primary focus lies on supporting students in educational settings, the concepts explored in this thesis also point towards benefits for professional developers' workflows.
