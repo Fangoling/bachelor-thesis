@@ -33,6 +33,27 @@ article:
     type: periodical
     title: Anales de Psicologia
     volume: 28
+bassnerIrisAIDrivenVirtual2024:
+  type: article
+  title:
+    value: 'Iris: {An AI-Driven Virtual Tutor For Computer Science Education}'
+    short: Iris
+  author:
+  - Bassner, Patrick
+  - Frankford, Eduard
+  - Krusche, Stephan
+  date: 2024-07-03
+  page-range: 394-400
+  url:
+    value: http://arxiv.org/abs/2405.08008
+    date: 2026-04-09
+  serial-number:
+    arxiv: '2405.08008'
+    doi: 10.1145/3649217.3653543
+  abstract: Integrating AI-driven tools in higher education is an emerging area with transformative potential. This paper introduces Iris, a chat-based virtual tutor integrated into the interactive learning platform Artemis that offers personalized, context-aware assistance in large-scale educational settings. Iris supports computer science students by guiding them through programming exercises and is designed to act as a tutor in a didactically meaningful way. Its calibrated assistance avoids revealing complete solutions, offering subtle hints or counter-questions to foster independent problem-solving skills. For each question, it issues multiple prompts in a Chain-of-Thought to GPT-3.5-Turbo. The prompts include a tutor role description and examples of meaningful answers through few-shot learning. Iris employs contextual awareness by accessing the problem statement, student code, and automated feedback to provide tailored advice. An empirical evaluation shows that students perceive Iris as effective because it understands their questions, provides relevant support, and contributes to the learning process. While students consider Iris a valuable tool for programming exercises and homework, they also feel confident solving programming tasks in computer-based exams without Iris. The findings underscore students' appreciation for Iris' immediate and personalized support, though students predominantly view it as a complement to, rather than a replacement for, human tutors. Nevertheless, Iris creates a space for students to ask questions without being judged by others.
+  parent:
+    type: proceedings
+    title: Proceedings of the 2024 on {Innovation} and {Technology} in {Computer Science Education V}. 1
 beckerEffectiveApproachEnhancing2016:
   type: article
   title: An {Effective Approach} to {Enhancing Compiler Error Messages}
@@ -54,6 +75,25 @@ beckerEffectiveApproachEnhancing2016:
       location: Memphis Tennessee USA
   - type: conference
     title: '{SIGCSE} ''16: {The} 47th {ACM Technical Symposium} on {Computing Science Education}'
+bruggeObjectorientedSoftwareEngineering2014:
+  type: book
+  title:
+    value: 'Object-Oriented Software Engineering: Using {UML}, Patterns, and {Java}'
+    short: Object-Oriented Software Engineering
+  author:
+  - Brügge, Bernd
+  - Dutoit, Allen H.
+  date: 2014
+  publisher:
+    name: Pearson
+    location: Harlow
+  edition: Third edition ; new international edition
+  page-total: 718
+  serial-number:
+    isbn: 978-1-292-02401-1
+  parent:
+    type: book
+    title: Always Learning
 dengRACONTEURKnowledgeableInsightful2025:
   type: article
   title:
@@ -84,6 +124,118 @@ dengRACONTEURKnowledgeableInsightful2025:
       location: San Diego, CA, USA
   - type: conference
     title: Network and {Distributed System Security Symposium}
+frankfordOnlineIntegratedDevelopment:
+  type: article
+  title: An {Online Integrated Development Environment} for {Automated Programming Assessment Systems}
+  author:
+  - Frankford, Eduard
+  - Crazzolara, Daniel
+  - Vierhauser, Michael
+  - Meißner, Niklas
+  - Krusche, Stephan
+  - Breu, Ruth
+  abstract: The increasing demand for programmers has led to a surge in participants in programming courses, making it increasingly challenging for instructors to assess student code manually. As a result, automated programming assessment systems (APASs) have been developed to streamline this process. These APASs support lecturers by managing and evaluating student programming exercises at scale. However, these tools often do not provide feature-rich online editors compared to their traditional integrated development environments (IDEs) counterparts. This absence of key features, such as syntax highlighting and autocompletion, can negatively impact the learning experience, as these tools are crucial for effective coding practice. To address this gap, this research contributes to the field of programming education by extracting and defining requirements for an online IDE in an educational context and presenting a prototypical implementation of an open-source solution for a scalable and secure online IDE. The usability of the new online IDE was assessed using the Technology Acceptance Model (TAM), gathering feedback from 27 first-year students through a structured survey. In addition to these qualitative insights, quantitative measures such as memory (RAM) usage were evaluated to determine the efficiency and scalability of the tool under varying usage conditions.
+  parent:
+    type: periodical
+gengGeneratingStructuredOutputs2025:
+  type: web
+  title:
+    value: 'Generating {Structured Outputs} from {Language Models}: {Benchmark} and {Studies}'
+    short: Generating {Structured Outputs} from {Language Models}
+  author:
+  - Geng, Saibo
+  - Cooper, Hudson
+  - Moskal, Michał
+  - Jenkins, Samuel
+  - Berman, Julian
+  - Ranchin, Nathan
+  - West, Robert
+  - Horvitz, Eric
+  - Nori, Harsha
+  date: 2025-02-10
+  url:
+    value: http://arxiv.org/abs/2501.10868
+    date: 2026-04-11
+  serial-number:
+    arxiv: '2501.10868'
+    doi: 10.48550/arXiv.2501.10868
+    version: '2'
+  abstract: 'Reliably generating structured outputs has become a critical capability for modern language model (LM) applications. Constrained decoding has emerged as the dominant technology across sectors for enforcing structured outputs during generation. Despite its growing adoption, little has been done with the systematic evaluation of the behaviors and performance of constrained decoding. Constrained decoding frameworks have standardized around JSON Schema as a structured data format, with most uses guaranteeing constraint compliance given a schema. However, there is poor understanding of the effectiveness of the methods in practice. We present an evaluation framework to assess constrained decoding approaches across three critical dimensions: efficiency in generating constraint-compliant outputs, coverage of diverse constraint types, and quality of the generated outputs. To facilitate this evaluation, we introduce JSONSchemaBench, a benchmark for constrained decoding comprising 10K real-world JSON schemas that encompass a wide range of constraints with varying complexity. We pair the benchmark with the existing official JSON Schema Test Suite and evaluate six state-of-the-art constrained decoding frameworks, including Guidance, Outlines, Llamacpp, XGrammar, OpenAI, and Gemini. Through extensive experiments, we gain insights into the capabilities and limitations of constrained decoding on structured generation with real-world JSON schemas. Our work provides actionable insights for improving constrained decoding frameworks and structured generation tasks, setting a new standard for evaluating constrained decoding and structured generation. We release JSONSchemaBench at https://github.com/guidance-ai/jsonschemabench'
+JetBrainsTerminalNew2025:
+  type: web
+  title:
+    value: '{JetBrains Terminal}: {A New Architecture} | {The IntelliJ IDEA Blog}'
+    short: '{JetBrains Terminal}'
+  date: 2025-04-08
+  organization: The JetBrains Blog
+  url:
+    value: https://blog.jetbrains.com/idea/2025/04/jetbrains-terminal-a-new-architecture/
+    date: 2026-04-07
+  abstract: We’re excited to announce our reworked terminal architecture, which is available in Beta starting with the 2025.1 versions of JetBrains IDEs. It now runs on a stable, standards-compliant core and uses
+kruscheArTEMiSAutomaticAssessment2018:
+  type: article
+  title:
+    value: '{ArTEMiS}: {An Automatic Assessment Management System} for {Interactive Learning}'
+    short: '{ArTEMiS}'
+  author:
+  - Krusche, Stephan
+  - Seitz, Andreas
+  date: 2018-02-21
+  page-range: 284-289
+  url:
+    value: https://dl.acm.org/doi/10.1145/3159450.3159602
+    date: 2026-04-09
+  serial-number:
+    doi: 10.1145/3159450.3159602
+    isbn: 978-1-4503-5103-4
+  abstract: The increasing number of students in computer science courses leads to high efforts in manual assessment of exercises. Existing assessment systems are not designed for exercises with immediate feedback in large classes. In this paper, we present an AuTomated assEssment Management System for interactive learning.
+  parent:
+  - type: proceedings
+    title: Proceedings of the 49th {ACM Technical Symposium} on {Computer Science Education}
+    publisher:
+      name: ACM
+      location: Baltimore Maryland USA
+  - type: conference
+    title: '{SIGCSE} ''18: {The} 49th {ACM Technical Symposium} on {Computer Science Education}'
+leisnerGoodByeLocalhostCloudBased2019:
+  type: article
+  title:
+    value: 'Good-{Bye Localhost}: {A Cloud-Based Web IDE} for {Teaching Java EE Web Development} to {Non-Computer Science Majors}'
+    short: Good-{Bye Localhost}
+  author:
+  - Leisner, Michael
+  - Brune, Philipp
+  date: 2019-05
+  page-range: 268-269
+  url:
+    value: https://ieeexplore.ieee.org/document/8802810/
+    date: 2026-04-01
+  serial-number:
+    doi: 10.1109/ICSE-Companion.2019.00108
+    issn: 2574-1934
+  abstract: While cloud-and web-based Integrated Development Environments (IDE) are used in practice and education for some time, these are mainly intended for classical web development. Support for enterprise platforms such as Java Enterprise Edition (EE) is typically lacking. However, in higher education, web-based cloud IDE are particularly useful in software development courses for non-computer science major students, since they could help to overcome the participants' limited IT skills. Thus, a respective easy-to-use web IDE is required. Therefore, in this paper a software platform for a web-based cloud IDE for educational purposes is proposed and evaluated, which in particular supports Java EE and is suitable for non-computer science majors. The platform was evaluated in a classroom experiment. The results indicate that it is useful and beneficial for the students, allowing the lecturer and the students to focus more on the actual learning objectives.
+  parent:
+  - type: proceedings
+    title: '2019 {IEEE}/{ACM} 41st {International Conference} on {Software Engineering}: {Companion Proceedings} ({ICSE-Companion})'
+  - type: conference
+    title: '2019 {IEEE}/{ACM} 41st {International Conference} on {Software Engineering}: {Companion} ({ICSE-Companion})'
+mohamedImpactLLMAssistantsSoftware2026:
+  type: web
+  title:
+    value: 'The {Impact} of {LLM-Assistants} on {Software Developer Productivity}: {A Systematic Review} and {Mapping Study}'
+    short: The {Impact} of {LLM-Assistants} on {Software Developer Productivity}
+  author:
+  - Mohamed, Amr
+  - Assi, Maram
+  - Guizani, Mariam
+  date: 2026-03-23
+  url:
+    value: http://arxiv.org/abs/2507.03156
+    date: 2026-04-11
+  serial-number:
+    arxiv: '2507.03156'
+    doi: 10.48550/arXiv.2507.03156
+  abstract: Large language model assistants (LLM-assistants) present new opportunities to transform software development. Developers are increasingly adopting these tools across tasks, including coding, testing, debugging, documentation, and design. Yet, despite growing interest, there is no synthesis of how LLM-assistants affect software developer productivity. In this paper, we present a systematic review and mapping of 39 peer-reviewed studies published between January 2014 and December 2024 that examine this impact. Our analysis reveals that the majority of studies report considerable benefits from LLM-assistants, though a notable subset identifies critical risks. Commonly reported gains include accelerated development, minimized code search, and the automation of trivial and repetitive tasks. However, studies also highlight concerns around cognitive offloading and reduced team collaboration. Our study reveals that whether LLM-based assistants improve or degrade code quality remains unresolved, as existing studies report contradictory outcomes contingent on context and evaluation criteria. While the majority of studies (90%) adopt a multi-dimensional perspective by examining at least two SPACE dimensions, reflecting increased awareness of the complexity of developer productivity, only 15% extend beyond three dimensions, indicating substantial room for more integrated evaluations. Satisfaction, Performance, and Efficiency are the most frequently investigated dimensions, whereas Communication and Activity remain underexplored. Most studies are exploratory (59%) and methodologically diverse, but lack longitudinal and team-based evaluations. This review surfaces key research gaps and provides recommendations for future research and practice. All artifacts associated with this study are publicly available at https://zenodo.org/records/18489222
 molichImprovingHumanComputer1994:
   type: article
   title: Improving a {Human- Computer Dialogue}
@@ -209,6 +361,16 @@ schroderEmpiricalInvestigationCommandline2022:
     title: Empirical Software Engineering
     issue: 2
     volume: 27
+solchScalingAssessmentStudent2026:
+  type: article
+  title: 'Scaling {Assessment} of {Student Models} with {LLMs}: {Integrating Feedback} into {Practice}'
+  author:
+  - Sölch, Maximilian
+  - Krusche, Stephan
+  date: 2026
+  abstract: Automated assessment of student modeling tasks is difficult to scale because UML diagrams are open-ended, graphical, and highly contextual. This paper presents a production-ready extension of Athena, an open-source feedback system that integrates directly with the learning platform Artemis to provide human-in-the-loop support for modeling exercises.
+  parent:
+    type: periodical
 StateCLI2023:
   type: web
   title: The {State} of the {CLI} 2023 {Edition}
@@ -217,6 +379,56 @@ StateCLI2023:
     value: https://www.warp.dev/state-of-the-cli-2023
     date: 2025-09-20
   abstract: Unveiling the common tools, technologies, and usage patterns of how terminal users interact with their shell, terminal, and command line.
+taelmanComponentsjsSemanticDependency2022:
+  type: article
+  title:
+    value: 'Components.Js: {Semantic} Dependency Injection'
+    short: Components.Js
+  author:
+  - Taelman, Ruben
+  - Van Herwegen, Joachim
+  - Vander Sande, Miel
+  - Verborgh, Ruben
+  date: 2022-11-30
+  page-range: 135-153
+  url:
+    value: https://journals.sagepub.com/action/showAbstract
+    date: 2026-04-01
+  serial-number:
+    doi: 10.3233/SW-222945
+    issn: 1570-0844
+  abstract: A common practice within object-oriented software is using composition to realize complex object behavior in a reusable way. Such compositions can be managed by Dependency Injection (DI), a popular technique in which components only depend on minimal interfaces and have their concrete dependencies passed into them. Instead of requiring program code, this separation enables describing the desired instantiations in declarative configuration files, such that objects can be wired together automatically at runtime. Configurations for existing DI frameworks typically only have local semantics, which limits their usage in other contexts. Yet some cases require configurations outside of their local scope, such as for the reproducibility of experiments, static program analysis, and semantic workflows. As such, there is a need for globally interoperable, addressable, and discoverable configurations, which can be achieved by leveraging Linked Data. We created Components.js as an open-source semantic DI framework for TypeScript and JavaScript applications, providing global semantics via Linked Data-based configuration files. In this article, we report on the Components.js framework by explaining its architecture and configuration, and discuss its impact by mentioning where and how applications use it. We show that Components.js is a stable framework that has seen significant uptake during the last couple of years. We recommend it for software projects that require high flexibility, configuration without code changes, sharing configurations with others, or applying these configurations in other contexts such as experimentation or static program analysis. We anticipate that Components.js will continue driving concrete research and development projects that require high degrees of customization to facilitate experimentation and testing, including the Comunica query engine and the Community Solid Server for decentralized data publication.
+  parent:
+    type: periodical
+    title: Semantic Web
+    publisher: SAGE Publications
+    issue: 1
+    volume: 14
+taylorDccHelpGenerating2023:
+  type: web
+  title:
+    value: 'Dcc –Help: {Generating Context-Aware Compiler Error Explanations} with {Large Language Models}'
+    short: Dcc –Help
+  author:
+  - Taylor, Andrew
+  - Vassar, Alexandra
+  - Renzella, Jake
+  - Pearce, Hammond
+  date: 2023-10-16
+  url:
+    value: http://arxiv.org/abs/2308.11873
+    date: 2026-04-11
+  serial-number:
+    arxiv: '2308.11873'
+    doi: 10.48550/arXiv.2308.11873
+  abstract: In the challenging field of introductory programming, high enrollments and failure rates drive us to explore tools and systems to enhance student outcomes, especially automated tools that scale to large cohorts. This paper presents and evaluates the dcc –help tool, an integration of a Large Language Model (LLM) into the Debugging C Compiler (DCC) to generate unique, novice-focused explanations tailored to each error. dcc –help prompts an LLM with contextual information of compile- and run-time error occurrences, including the source code, error location and standard compiler error message. The LLM is instructed to generate novice-focused, actionable error explanations and guidance, designed to help students understand and resolve problems without providing solutions. dcc –help was deployed to our CS1 and CS2 courses, with 2,565 students using the tool over 64,000 times in ten weeks. We analysed a subset of these error/explanation pairs to evaluate their properties, including conceptual correctness, relevancy, and overall quality. We found that the LLM-generated explanations were conceptually accurate in 90% of compile-time and 75% of run-time cases, but often disregarded the instruction not to provide solutions in code. Our findings, observations and reflections following deployment indicate that dcc-help provides novel opportunities for scaffolding students' introduction to programming.
+TerminalShellIntegration:
+  type: web
+  title: Terminal {Shell Integration}
+  url:
+    value: https://code.visualstudio.com/docs/terminal/shell-integration
+    date: 2026-04-07
+  abstract: Visual Studio Code's embedded terminal can integrate with some shells to enhance the capabilities of the terminal.
 TheiaIDEAINative:
   type: web
   title: Theia {IDE} – {AI-Native Open-Source Cloud} and {Desktop IDE}
@@ -232,6 +444,13 @@ WarpAgenticDevelopment:
     value: https://www.warp.dev/
     date: 2025-09-09
   abstract: Warp is an AI agent platform that lets you run multiple agents in parallel to complete any development task.
+Xtermjs:
+  type: web
+  title: Xterm.Js
+  url:
+    value: http://xtermjs.org/
+    date: 2026-04-08
+  abstract: Terminal front-end component written in JavaScript that works in the browser.
 zotero-item-62:
   type: web
 
