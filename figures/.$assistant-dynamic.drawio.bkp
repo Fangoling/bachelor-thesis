@@ -1009,15 +1009,15 @@
     </mxGraphModel>
   </diagram>
   <diagram id="3e5uLpVWrCDD9BPCeX9w" name="Page-7">
-    <mxGraphModel dx="1581" dy="1191" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="2040" dy="737" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="JKGJWTEayBHf8eF9bKea-64" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fillColor=none;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;User&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;div style=&quot;height:2px;&quot;&gt;&lt;br&gt;&lt;/div&gt;" vertex="1">
-          <mxGeometry height="630" width="386" x="-800" y="30" as="geometry" />
+          <mxGeometry height="610" width="386" x="-800" y="50" as="geometry" />
         </mxCell>
         <mxCell id="JKGJWTEayBHf8eF9bKea-65" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fillColor=none;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Terminal AI Assistant&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;div style=&quot;height:2px;&quot;&gt;&lt;br&gt;&lt;/div&gt;" vertex="1">
-          <mxGeometry height="630" width="160" x="-414" y="30" as="geometry" />
+          <mxGeometry height="610" width="160" x="-414" y="50" as="geometry" />
         </mxCell>
         <mxCell id="JKGJWTEayBHf8eF9bKea-66" parent="1" style="ellipse;html=1;shape=endState;fillColor=#000000;strokeColor=#000000;" value="" vertex="1">
           <mxGeometry height="30" width="30" x="-515" y="90" as="geometry" />
@@ -1031,8 +1031,8 @@
         <mxCell id="JKGJWTEayBHf8eF9bKea-69" edge="1" parent="1" source="JKGJWTEayBHf8eF9bKea-70" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" target="JKGJWTEayBHf8eF9bKea-73">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="-570" y="295" />
-              <mxPoint x="-570" y="395" />
+              <mxPoint x="-580" y="295" />
+              <mxPoint x="-580" y="395" />
             </Array>
             <mxPoint x="370" y="25" as="targetPoint" />
           </mxGeometry>
@@ -1125,7 +1125,7 @@
         <mxCell id="JKGJWTEayBHf8eF9bKea-103" edge="1" parent="1" source="JKGJWTEayBHf8eF9bKea-91" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="JKGJWTEayBHf8eF9bKea-95">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="JKGJWTEayBHf8eF9bKea-91" parent="1" style="html=1;whiteSpace=wrap;rounded=1;" value="Expand Fix Hints" vertex="1">
+        <mxCell id="JKGJWTEayBHf8eF9bKea-91" parent="1" style="html=1;whiteSpace=wrap;rounded=1;" value="Expand Remediation&lt;div&gt;Steps&lt;/div&gt;" vertex="1">
           <mxGeometry height="50" width="120" x="-730" y="470" as="geometry" />
         </mxCell>
         <mxCell id="JKGJWTEayBHf8eF9bKea-92" edge="1" parent="1" source="JKGJWTEayBHf8eF9bKea-93" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="JKGJWTEayBHf8eF9bKea-68">

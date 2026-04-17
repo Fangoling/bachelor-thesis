@@ -152,7 +152,7 @@
         <mxCell id="_ViUkjXwlmT6fwoJ_q-U-84" value="assistant service" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="1320" y="210" width="170" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="_ViUkjXwlmT6fwoJ_q-U-86" value="ai terminal assistant agent" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+        <mxCell id="_ViUkjXwlmT6fwoJ_q-U-86" value="AI Terminal Assistant agent" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="1540" y="210" width="170" height="80" as="geometry" />
         </mxCell>
         <mxCell id="_ViUkjXwlmT6fwoJ_q-U-87" value="assistant view widget" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">

@@ -158,10 +158,13 @@
     }
   ]
 
-  // Appendix.
+  // Appendixes.
   pagebreak()
-  heading(numbering: none)[Appendix A: Supplementary Material]
-  include("/layout/appendix.typ")
+  {
+    set heading(numbering: "A.1", supplement: [Appendix])
+    counter(heading).update(0)
+    include("/layout/appendix_a.typ")
+  }
 
   pagebreak()
   bibliography("/thesis.yml")

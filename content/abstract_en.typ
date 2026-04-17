@@ -1,10 +1,7 @@
-The terminal is a central tool in the workflow of developers, yet it often presents challenges due to its steep learning curve and overwhelming output.
-To address these issues, this work proposes an AI-assisted system to enhance terminal usability.
-We implement the system within the Theia IDE, which features an integrated terminal. 
+Terminals are central to software development, yet their unstructured output and cryptic error messages pose significant barriers for novice programmers. In educational settings, students working on introductory programming exercises often struggle to interpret build failures and runtime errors, which delays learning and increases frustration.
 
-The proposed system leverages a large language model (LLM) to process outputs, such as those generated during a Java build, to summarize key information and explain errors with remediation hints.
-By providing context-aware guidance and transparent explanation, the system reduces the need to consult external documentation. 
-Shell integration extends the capabilites of the terminal to capture structured command execution data and construct a commmand history, which enhances the context available for AI analysis. 
+This thesis presents two cooperating extensions for the Eclipse Theia IDE that address these challenges. First, a shell integration layer instruments the terminal with OSC escape sequences to reconstruct command boundaries from the raw byte stream, producing structured command blocks with associated output for bash and zsh. Second, the AI Terminal Assistant consumes these blocks to generate automatic summaries of build and runtime output, structured error explanations with file and line references, and suggested remediation steps that support independent problem-solving without revealing the solution.
 
-To evaluate the system's effectiveness, we conduct a qualitative user study with computer science students, gathering feedback on usability and pedagogical value.
-While the primary focus lies on supporting students in educational settings, the concepts explored in this thesis also point towards benefits for professional developers' workflows.
+The proposed system follows a modular extension architecture within Eclipse Theia and integrates structured terminal interaction with AI-supported error explanation into the existing IDE workflow. By introducing shell integration, structured command history, interactive terminal enhancements, and the AI Terminal Assistant, this thesis contributes an extensible foundation for terminal-aware assistance in open IDE environments.
+
+We evaluate the system through a qualitative user study with computer science students. The findings suggest that the educational design choices, particularly plain-language explanations and hidden-by-default remediation steps, align with student expectations, while also revealing usability issues that informed subsequent design revisions.

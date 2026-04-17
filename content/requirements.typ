@@ -1,8 +1,9 @@
 #import "/utils/todo.typ": TODO
+#import "/utils/diagram.typ": diagram
 
-= Requirements
+= Requirements <requirements>
 
-We describe the requirements for the proposed system following the Object-Oriented Software Engineering methodology by Bruegge and Dutoit @bruggeObjectorientedSoftwareEngineering2014. We formulate these requirements in terms of system behavior and user needs. Derived from the problem statement and motivation outlined in the Introduction, these requirements serve as the basis for the system design and implementation described in subsequent chapters.
+We describe the requirements for the proposed system following the Object-Oriented Software Engineering methodology by Bruegge and Dutoit @bruggeObjectorientedSoftwareEngineering2014. We formulate these requirements in terms of system behavior and user needs. Derived from the problem statement and motivation outlined in @intro, these requirements serve as the basis for the system design and implementation described in subsequent chapters.
 
 == Overview
 
@@ -18,7 +19,7 @@ The existing terminal also provides no visual differentiation between discrete c
 
 == Proposed System
 
-We propose extending the Theia IDE with two cooperating subsystems. The shell integration subsystem introduces command boundaries and provides structured terminal context, allowing the IDE to treat command executions as discrete units with associated output. The AI terminal assistant subsystem consumes this structured context to generate output summaries, structured error explanations, and guiding solution hints automatically upon task completion.
+We propose extending the Theia IDE with two cooperating subsystems. The shell integration subsystem introduces command boundaries and provides structured terminal context, allowing the IDE to treat command executions as discrete units with associated output. The AI Terminal Assistant subsystem consumes this structured context to generate output summaries, structured error explanations, and suggested remediation steps automatically upon task completion.
 
 === Functional Requirements
 
@@ -34,13 +35,15 @@ We propose extending the Theia IDE with two cooperating subsystems. The shell in
 - *FR5 Visualize Command Boundaries:* The terminal shall visually mark the boundaries of individual commands to allow users to distinguish each command and its output at a glance. <fr5>
 - *FR6 Provide Command Block Actions:* The user shall be able to hover over a command's output block to access quick actions, including copying the command, scrolling to block boundaries, and opening an AI assistant session using the block as context. <fr6>
 
+#pagebreak()
+
 *AI Terminal Assistant*
 
 - *FR7 Generate Task Summary:* The system shall automatically generate an AI summary upon the completion of a build task or debug session, without requiring manual invocation. <fr7>
 - *FR8 Report Execution Status:* The summary shall indicate whether the task succeeded or failed and provide a plain-language explanation of the terminal output suitable for students without domain knowledge. <fr8>
 - *FR9 Structure Error Entries:* When the task output contains errors, the system shall present each error as a structured entry detailing the affected file, the exact location, and a plain-language explanation. <fr9>
-- *FR10 Guide Error Resolution:* The system shall provide fix suggestions that guide the student toward a solution without directly revealing the answer, thereby preserving the educational value of the exercise. <fr10>
-- *FR11 Navigate to Error Location:* The user shall be able to navigate directly to the affected file and line in the editor by clicking an error entry. <fr11>
+- *FR10 Guide Error Resolution:* The system shall provide suggested remediation steps that guide the student toward a solution without directly revealing the answer, thereby preserving the educational value of the exercise. <fr10>
+- *FR11 Navigate to Error Location:* The user shall be able to navigate directly to the affected file and line in the editor by clicking an 'Open in Editor' button within the error entry. <fr11>
 - *FR12 Preserve Traceability to Raw Output:* The assistant shall provide access to the raw execution output that underlies the AI interpretation so users can verify the source of the summary. <fr12>
 - *FR13 Support Interactive Task I/O:* The system shall support direct propagation of input and output streams for interactive task executions before the command has completed. <fr13>
 - *FR14 Configure Assistance Modes:* The system shall support configurable assistance modes, allowing users to control how the assistant presents information within the terminal workflow. <fr14>
@@ -57,73 +60,76 @@ We propose extending the Theia IDE with two cooperating subsystems. The shell in
 
 - *C1 Theia Extension Architecture (Implementation Constraint):* The system must integrate into the existing Theia extension and dependency injection architecture.
 - *C2 External LLM Dependency (Interface Constraint):* The AI features depend on an external large language model (LLM) provider accessed through the Theia AI Core. The system does not bundle a self-hosted model.
-- *C3 Target Platform Scope (Operations Constraint):* The implementation targets `bash` and `zsh` on macOS and Linux. Windows shells (`PowerShell`, `cmd.exe`) and the `fish` shell remain explicitly out of scope.
+- *C3 Target Platform Scope (Operations Constraint):* The implementation targets bash and zsh on macOS and Linux. Windows shells (PowerShell, cmd.exe) and the fish shell remain explicitly out of scope.
 
 == System Models
 
-We present the system models for the proposed solution following the methodology by @bruggeObjectorientedSoftwareEngineering2014. These models progress from concrete scenarios that ground the abstract requirements in realistic use, through a use case model capturing actor interactions, to a domain-level analysis object model and a dynamic model describing runtime behavior.
+We present the system models for the proposed solution following the methodology by Bruegge and Dutoit @bruggeObjectorientedSoftwareEngineering2014. These models progress from concrete scenarios that ground the abstract requirements in realistic use, through a use case model capturing actor interactions, to a domain-level analysis object model and a dynamic model describing runtime behavior.
 
 === Scenarios
 
 *Scenario 1: Beginner Student Encounters a Build Error*
 
-A first-semester student opens the online IDE to work on a programming exercise. The student executes the provided build task, which results in a runtime failure. The terminal fills with compiler output that the student cannot interpret. Automatically, the assistant view opens alongside the task output, displaying a failure status indicator and a concise, plain-language summary of the error. Individual error cards appear below the summary. Each card identifies the affected file and line, explains the error type without assuming prior knowledge, and offers collapsed fix steps that guide the student without revealing the direct solution. 
+A first-semester student opens the online IDE to work on a programming exercise. The student runs the exercise code, which results in a runtime failure. The terminal fills with the runtime output that the student cannot interpret. Automatically, the assistant view opens alongside the output, displaying a failure status indicator and a concise, plain-language summary of the error. Individual error cards appear below the summary. Each card identifies the affected file and line, explains the error type without assuming prior knowledge, and offers collapsed remediation steps that guide the student without revealing the direct solution. 
 
-Seeking to resolve the issue, the student clicks the navigation button. The system opens the corresponding file in the editor, moves the cursor to the exact line, and applies a visual decoration. To further understand the issue, the student expands the fix steps and follows the instructions to inspect variable values using print statements. This guidance enables the student to comprehend the root cause and successfully fix the error.
+Seeking to resolve the issue, the student clicks the navigation button. The system opens the corresponding file in the editor, moves the cursor to the exact line, and applies a visual decoration. To further understand the issue, the student expands the remediation steps and follows the instructions to inspect variable values using print statements. This guidance enables the student to comprehend the root cause and successfully fix the error.
 
 *Scenario 2: Advanced Student Works with Structured Command History*
 
 A student comfortable with the terminal runs build commands directly in the integrated terminal. The system automatically tracks these command blocks and marks them visually. The student navigates rapidly through extensive terminal output by scrolling to command boundaries and easily copies a previous command to modify and re-execute it. 
 
-Upon encountering a build failure, the student hovers over the command block to access the quick action menu and opens an AI assistant session using the command output as context. The assistant view opens with an error summary and specific fix suggestions, which the student uses to inspect the issue without requiring automatic summarization for every direct terminal command.
+Upon encountering a build failure, the student hovers over the command block to access the quick action menu and opens an AI assistant session using the command output as context. The assistant view opens with an error summary and suggested remediation steps, which the student uses to inspect the error without requiring automatic summarization for every build or runtime output.
 
 === Use Case Model
 
-#figure(
-  image("../figures/assistant-usecase.svg"),
-  caption: [The use case model summarizes the main student interactions with the AI Terminal Assistant. It shows error interpretation, navigation, and hint-based remediation within the IDE workflow as use cases of the terminal assistant.]
+#diagram(
+  image("../figures/assistant-usecase.pdf"),
+  caption: [The use case model summarizes the main student interactions with the AI Terminal Assistant. It shows error interpretation, navigation, and hint-based remediation within the IDE workflow as use cases of the terminal assistant.],
+  short-caption: [Use Case Model]
 ) <use-case-diagram>
 
 @use-case-diagram shows the interactions between the Student actor and the AI Terminal Assistant.
 
-The Student interacts with the AI terminal assistant to resolve errors. The student can inspect the raw build output or the output summary to determine the success of the last code execution. When the last execution throws an error, the student can review the error explanation to determine the cause of the issue.
+The Student interacts with the AI Terminal Assistant to resolve errors. The student can inspect the raw build and runtime output or the output summary to determine the result of the last execution. When the last output indicates an error, the student can review the error explanation to determine the cause of the issue.
 
-The student can then open the file with the error in the editor, which also navigates to the specific error line for detailed inspection, or expand the fix steps to review solution hints.
+The student can then open the file with the error in the editor, which also navigates to the specific error line for detailed inspection, or expand the remediation steps to review the suggested guidance.
 
 
 === Analysis Object Model
 
 
-The analysis object model depicted in @analysis-object-model captures the domain-level objects introduced by this work. Rather than representing implementation classes, it describes the core concepts and their relationships within the application domain, adhering to the recommendations of @bruggeObjectorientedSoftwareEngineering2014.
-
-A `CommandBlock` acts as the central structured artifact produced by the shell integration layer. It represents a discrete unit comprising a single command and its corresponding output. `CommandBlocks` serve as the primary entity through which higher-level features access structured terminal interactions.
-
-A `Summary` represents the AI-produced interpretation of a command execution result. It contains an overall success or failure status, a plain-language explanation of the output, and a list of `ErrorDetails` if the system detects errors. The system generates a `Summary` automatically upon task completion and associates it with the triggering command.
-
-An `ErrorDetail` represents a single diagnosed error within a `Summary`. It encapsulates the error type, the affected file name and line number, a structured list of `ErrorExplanations`, and a sequence of guided `FixSteps`. 
-
-An `ErrorExplanation` defines the pedagogical breakdown of the issue (categorized into What, Why, and How) alongside the explanatory content itself. Meanwhile, a `FixStep` provides a plain-language description of an actionable remediation step, which the system reveals when the user requests a hint. 
-
-The `ErrorDetail` also contains a `CodeSnippet`, which extracts the relevant source code responsible for the error. This snippet includes the specific error line accompanied by several lines of surrounding context.
-
-#figure(
+#diagram(
   image("../figures/assistant-aom.svg"),
-  caption: [The analysis object model defines the core domain entities of the terminal assistant.]
+  caption: [The analysis object model defines the core domain entities of the terminal assistant.],
+  short-caption: [Analysis Object Model]
 ) <analysis-object-model>
+
+The analysis object model depicted in @analysis-object-model captures the domain-level objects introduced by this work. Rather than representing implementation classes, it describes the core concepts and their relationships within the application domain.
+
+A #emph[CommandBlock] acts as the central structured artifact produced by the shell integration layer. It represents a discrete unit comprising a single command and its corresponding output. #emph[CommandBlocks] serve as the primary entity through which higher-level features access structured terminal interactions.
+
+A #emph[Summary] represents the AI-produced interpretation of a command execution result. It contains an overall success or failure status, a plain-language explanation of the output, and a list of #emph[ErrorDetails] if the system detects errors. The system generates a #emph[Summary] automatically upon task completion and associates it with the triggering command.
+
+An ErrorDetail represents a single diagnosed error within a #emph[Summary]. It encapsulates the error type, the affected file name and line number, a structured list of ErrorExplanations, and a sequence of #emph[RemediationSteps]. 
+
+An #emph[ErrorExplanation] defines the pedagogical breakdown of the issue (categorized into What, Why, and How) alongside the explanatory content itself. Meanwhile, a #emph[RemediationStep] provides a plain-language description of an actionable remediation step, which the system reveals when the user requests it. 
+
+The #emph[ErrorDetail] also contains a #emph[CodeSnippet], which extracts the relevant source code responsible for the error. This snippet includes the specific error line accompanied by several lines of surrounding context.
 
 === Dynamic Model
 
-#figure(
+The dynamic model in @dynamic-model describes the interaction flow through the AI Terminal Assistant, tracing the path from build and runtime output to error resolution.
+
+The flow begins when the user triggers exercise code and the system produces build or runtime output in the terminal. Once the output is available, the system evaluates the resulting terminal output. If the output contains an error, the system analyzes the relevant execution context and constructs a structured error explanation.
+
+Subsequently, the assistant view updates automatically. It displays the status indicator and the summary text. For each detected error, the view renders an error card containing the affected file name, line number, and a plain-language explanation. The system keeps specific remediation steps collapsed by default to encourage independent problem-solving.
+
+From this state, the user can initiate several actions. Clicking an error card navigates the editor to the exact file and line, where the IDE applies a line decoration to highlight the error location. The user reads the structured explanation to comprehend the issue. After inspecting the code and reviewing the explanation, the user may either implement a fix directly or expand the remediation steps to receive additional guidance.
+
+Conversely, if the build or runtime output indicates success, the assistant generates an output summary and displays it in the assistant view without rendering any error cards. The user may then conclude the exercise or continue editing and rebuilding the code, which triggers the analysis flow again.
+
+#diagram(
   image("../figures/assistant-dynamic.svg"),
-  caption: [Activity diagram illustrating the asynchronous feedback loop between the User and the Terminal AI Assistant during code execution and debugging.]
+  caption: [Activity diagram illustrating the asynchronous feedback loop between a student and the Terminal AI Assistant during build and runtime output analysis.],
+  short-caption: [Dynamic Model]
 ) <dynamic-model>
-
-The dynamic model in @dynamic-model describes the complete interaction flow through the AI terminal assistant, tracing the path from initial task execution to final error resolution.
-
-The flow begins when a user executes a build or run task, either via the IDE task runner or directly within the terminal. Upon task completion, the system detects the exit event and evaluates whether the output contains errors. If an error exists, the system analyzes the relevant execution context and constructs a structured error explanation.
-
-Subsequently, the assistant view updates automatically. It displays the status indicator and the summary text. For each detected error, the view renders an error card containing the affected file name, line number, and a plain-language explanation. The system keeps specific fix steps collapsed by default to encourage independent problem-solving.
-
-From this state, the user can initiate several actions. Clicking an error card navigates the editor to the exact file and line, where the IDE applies a line decoration to highlight the error location. The user reads the structured explanation to comprehend the issue. After inspecting the code and reviewing the explanation, the user may either implement a fix directly or expand the fix steps to receive additional hints.
-
-Conversely, if the task executes successfully, the assistant generates an output summary and displays it in the assistant view without rendering any error cards. The user may then conclude the exercise or continue editing and rebuilding the code, which re-triggers the analysis flow.
