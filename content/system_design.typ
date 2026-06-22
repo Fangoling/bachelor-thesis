@@ -1,9 +1,11 @@
 #import "/utils/todo.typ": TODO
 #import "/utils/diagram.typ": diagram
+#import "/utils/print_page_break.typ": print_page_break
 
+#print_page_break(print: true, to: "odd")
 = System Design <system>
 
-This chapter describes the system design of the proposed extensions for the Theia IDE. Following the system design document template described by Bruegge and Dutoit @bruggeObjectorientedSoftwareEngineering2014, this chapter explains how the concepts of the application domain identified in the Requirements chapter are mapped to the solution domain. In particular, it maps the functional requirements (FRs) to subsystem responsibilities and the quality attributes (QAs) to architectural decisions and trade-offs.
+This chapter describes the system design of the proposed extensions for the Theia IDE. Following the system design document template described by Bruegge and Dutoit @bruggeObjectorientedSoftwareEngineering2014, this chapter explains how the concepts of the application domain identified in @requirements are mapped to the solution domain. In particular, it maps the functional requirements (FRs) to subsystem responsibilities and the quality attributes (QAs) to architectural decisions and trade-offs.
 
 == Overview
 
@@ -19,7 +21,7 @@ The software architecture is guided by both the functional requirements #link(<f
 
 *Usability*
 - Error explanations must be comprehensible to students without prior domain knowledge (#link(<qa1>)[QA1]). The system must filter raw stack traces and provide actionable remediation steps that guide the student without revealing the full solution.
-- The user interface must clearly distinguish AI-generated summaries from raw execution output (#link(<qa2>)[QA2]). In dedicated assistant mode, the user can inspect both side by side; in standalone mode, the user retains access to the relevant execution context even though the raw output is surfaced in a more controlled way.
+- The user interface must clearly distinguish AI-generated summaries from raw execution output (#link(<qa2>)[QA2]). In dedicated assistant mode, the user can inspect both side-by-side; in standalone mode, the user retains access to the relevant execution context, even though the raw output is surfaced in a more controlled way.
 
 *Performance*
 - The AI summary response must appear within a timeframe acceptable for interactive use (#link(<qa3>)[QA3]). LLM generation must not block the user's primary workflow or the main IDE thread.
@@ -37,7 +39,7 @@ The software architecture is guided by both the functional requirements #link(<f
 
 Following Bruegge and Dutoit @bruggeObjectorientedSoftwareEngineering2014, conflicting design goals require prioritization. In this system, *Reliability* and *Usability* take precedence over *Performance* and feature completeness.
 
-The first trade-off involves generation speed versus the pedagogical quality of the AI output. Generating a high-quality, structured response, including precise file resolution and suggested remediation steps, supports #link(<fr7>)[FR7]-#link(<fr12>)[FR12] as well as #link(<qa1>)[QA1], but it also increases pressure on #link(<qa3>)[QA3]. This design therefore favors pedagogically useful output over immediate but less structured responses.
+The first trade-off involves generation speed versus the pedagogical quality of the AI output. Generating a high-quality, structured response, including precise file resolution and suggested remediation steps, supports #link(<fr7>)[FR7]-#link(<fr12>)[FR12] as well as #link(<qa1>)[QA1], but it also increases pressure on #link(<qa3>)[QA3]. This design favors pedagogically useful output over immediate but less structured responses.
 
 Another trade-off exists between shell integration and terminal reliability. Modifying the pseudoterminal (PTY) layer directly could strengthen capture completeness for #link(<fr1>)[FR1]-#link(<fr4>)[FR4], but it risks destabilizing the terminal for users with complex shell configurations and would weaken #link(<qa4>)[QA4]. Therefore, the design chooses to inject hooks strictly at the shell startup phase via standard configuration files. This prioritizes reliability and fallback safety over absolute capture guarantees.
 
@@ -48,7 +50,7 @@ We decompose the proposed system into two primary subsystems: Shell Integration 
 
 === AI Terminal Assistant Subsystem
 
-The AI Terminal Assistant subsystem manages the orchestration of AI-driven features and their integration with the IDE. @assistant-ssd shows the internal structure of this subsystem and highlights how the assistant combines task monitoring, LLM analysis, source resolution, and UI presentation.
+The AI Terminal Assistant subsystem orchestrates AI-driven features and their integration with the IDE. @assistant-ssd shows the internal structure of this subsystem and highlights how the assistant combines task monitoring, LLM analysis, source resolution, and UI presentation.
 
 #diagram(
   image("../figures/assistant-ssd.pdf"),
@@ -56,8 +58,8 @@ The AI Terminal Assistant subsystem manages the orchestration of AI-driven featu
   short-caption: [AI Terminal Assistant Subsystem Decomposition]
 ) <assistant-ssd>
 
-- *AI Terminal Assistant Core:* This component acts as the central coordinator. It subscribes to IDE task events via the Task Monitoring Service, which handles code execution. Upon task completion it retrieves the relevant Command Block via the Command History Service and initiates the AI analysis.
-- *Summary Agent:* Operating as the core AI integration component, the agent accepts recent terminal contents and requests a structured response from the LLM via the LLM Service provided by the AI-Core Extension. The output schema enforces a specific format containing the success status, a plain-text summary, and an array of error objects detailing the category, file, line, explanation, and remediation steps.
+- *AI Terminal Assistant Core:* This component acts as the central coordinator. It subscribes to IDE task events via the Task Monitoring Service, which handles code execution. Upon task completion, it retrieves the relevant Command Block via the Command History Service and initiates the AI analysis.
+- *Summary Agent:* Operating as the core AI integration component, the agent accepts recent terminal contents and requests a structured response from the LLM via the LLM Service provided by the AI-Core Extension. The output schema enforces a specific format that includes the success status, a plain-text summary, and an array of error objects that detail the category, file, line, explanation, and remediation steps.
 - *Error Source Resolver:* This component maps file references that the LLM produced to resources in the workspace. The File Access Service resolves paths and retrieves the corresponding source locations, which enables us to extract the relevant code context for each error. The resolved information is then used to enrich the explanation, support navigation to the affected file and line in the editor, and apply visual highlights via the Editor Decoration Service.
 - *AI Terminal Assistant View:* The client-side UI comprises the Assistant View Widget, which hosts the Summary View (displaying execution status, error explanations, and remediation steps) alongside the Terminal Buffer View that presents the underlying task output depending on the active mode.
 
@@ -65,7 +67,7 @@ The AI Terminal Assistant subsystem manages the orchestration of AI-driven featu
   #align(left)[*AI Analysis and Enrichment Pipeline*]
 ]
 
-The AI Analysis and Enrichment Pipeline operates in two distinct assistant modes. The first mode, referred to as the dedicated case, integrates the assistant alongside a terminal widget. This configuration provides the highest level of transparency because the user can inspect the summary and the raw task output at the same time. @assistant-a-sequence illustrates the summary creation flow for this configuration.
+The AI Analysis and Enrichment Pipeline operates in two distinct assistant modes. The first mode, referred to as the dedicated case, integrates the assistant alongside a terminal widget. This configuration provides the highest level of transparency because the user can inspect the summary and the raw task output simultaneously. @assistant-a-sequence illustrates the summary creation flow for this configuration.
 
 #diagram(
   image("../figures/assistant-a-sequence.svg"),
@@ -73,7 +75,7 @@ The AI Analysis and Enrichment Pipeline operates in two distinct assistant modes
   short-caption: [Dedicated Assistant Sequence Diagram]
 ) <assistant-a-sequence>
 
-When a user initiates a task, the system routes the execution output to the standard terminal. Upon task completion, the Task Extension emits an `onExecutionFinished` event, which notifies the AI Terminal Assistant Core. The core subsequently retrieves the most recent command block from the active terminal widget. The assistant passes the content of this command execution to the Summary Agent alongside a predefined prompt. The agent generates a structured summary comprising error explanations, remediation steps, and the relevant filename.
+When a user initiates a task, the system routes the execution output to the standard terminal. Upon task completion, the Task Extension emits an `onExecutionFinished` event, which notifies the AI Terminal Assistant Core. The core subsequently retrieves the most recent command block from the active terminal widget. The assistant passes the command execution content to the Summary Agent along with a predefined prompt. The agent generates a structured summary comprising error explanations, remediation steps, and the relevant filename.
 
 To enhance the utility of this summary, the system passes the filename to the Error Source Resolver, which enriches the data with the absolute file path and specific error lines. The system then emits an `onSummaryReady` event, which notifies the Summary View to fetch the enriched summary.
 
@@ -85,7 +87,7 @@ The secondary mode, or the standalone case, operates without a visible terminal 
   short-caption: [Standalone Assistant Sequence Diagram]
 ) <assistant-b-sequence>
 
-In this configuration the system manages its own buffer, which is cleared between each task execution. The assistant must support interactive terminal sessions, as certain code executions require user input before the command has finished. To satisfy this requirement, we instantiate a new, hidden terminal for each execution and propagate input and output streams directly between this invisible terminal and the assistant component. This design circumvents the limitation that the terminal history mechanism only captures commands after they have finished executing, thereby ensuring continuous interaction during active tasks.
+In this configuration, the system manages its own buffer, which is cleared between each task execution. The assistant must support interactive terminal sessions, as some code executions require user input before the command completes. To satisfy this requirement, we instantiate a new, hidden terminal for each execution and propagate input and output streams directly between this invisible terminal and the assistant component. This design circumvents the limitation that the terminal history mechanism captures commands only after they finish executing, thereby ensuring continuous interaction during active tasks.
 
 Compared with the dedicated mode, the standalone mode provides a higher level of abstraction because the full raw terminal buffer is not shown side by side throughout the execution. However, the system preserves traceability by retaining the relevant execution context and exposing it after completion as the basis of the generated summary. This trade-off is acceptable because the primary purpose of the mode is to reduce visual noise for beginner students and to still support interactive tasks.
 
@@ -93,9 +95,11 @@ Compared with the dedicated mode, the standalone mode provides a higher level of
   #align(left)[*Educational Prompt Design*]
 ]
 
-Prompt design is part of the system architecture because it mediates between the LLM's free-form generation and the deterministic contracts required by the UI and service layer. The pedagogical tone of the prompt supports #link(<fr10>)[FR10] and #link(<qa1>)[QA1]: the prompt instructs the model to explain errors in accessible language and to provide hints that guide the student without revealing the full solution.
+Prompt design is part of the system architecture because it mediates between the LLM's free-form generation and the deterministic contracts required by the UI and service layer. The pedagogical tone of the prompt supports #link(<fr10>)[FR10] and #link(<qa1>)[QA1]: it instructs the model to explain errors in accessible language and to provide hints that guide the student without revealing the full solution.
 
-The prompt also supports #link(<fr7>)[FR7]-#link(<fr12>)[FR12] through a strict JSON schema and validation logic. The schema separates summary text, structured error entries, file and line references, and remediation steps so the assistant can render them deterministically. The prompt requires structured filename and line information to support #link(<fr11>)[FR11], and it preserves the link between the AI output and the underlying execution context required by #link(<fr12>)[FR12].
+To support #link(<fr7>)[FR7]-#link(<fr12>)[FR12], the system does not consume free-form model output directly. Instead, it enforces a strict JSON response schema and validates the model output before rendering. The schema separates summary text, structured error entries, file and line references, and remediation steps so the assistant can process the result deterministically. Structured filename and line information support #link(<fr11>)[FR11], while the preserved execution context maintains the traceability required by #link(<fr12>)[FR12].
+
+The complete prompt template and the JSON response schema defining the expected output structure are available in a dedicated public repository. #footnote[https://github.com/Fangoling/bachelor-thesis-enhancing-terminal-usability-prompt/releases/tag/ba]
 
 #block(width: 100%)[
   #align(left)[*AI Terminal Assistant View*]
@@ -111,7 +115,7 @@ The prompt also supports #link(<fr7>)[FR7]-#link(<fr12>)[FR12] through a strict 
 
 The panel acts as a dedicated surface configured according to the assistant mode. A status indicator border on the left edge provides immediate visual feedback: green for success and red for failure. The panel header displays the build result as a title with an accompanying icon, followed by a brief text summary detailing the project name, executed class, and total error count.
 
-Below the header, the view lists expandable error cards. Each card displays the error category, specific error type, affected file, line number, and contextual action buttons, such as an "Open in Editor" control. Expanding a card reveals the structured explanation text, where labels clarify the pedagogical purpose of each segment. A remediation steps section remains collapsed by default and contains suggested remediation steps designed to resolve the error without outright revealing the solution.
+Below the header, the view lists expandable error cards. Each card displays the error category, specific error type, affected file, line number, and contextual action buttons, such as an "Open in Editor" control. Expanding a card reveals the structured explanation text, where labels clarify the pedagogical purpose of each segment. The remediation steps section remains collapsed by default and contains suggested steps to resolve the error without outright revealing the solution.
 
 Depending on the assistant mode, the view also shows either the raw output of the task side by side or a preserved execution context that documents the output on which the summary is based.
 
@@ -127,21 +131,22 @@ The Shell Integration subsystem introduces command boundaries into the terminal 
 
 - *Shell Integration:* This component intercepts the terminal creation process to inject shell-specific startup scripts. These scripts emit OSC control sequences that encode the command text and mark the start and end of command outputs. The injector handles both bash and zsh configurations to ensure broad compatibility.
 - *Shell:* The shell resides within the Terminal Server and processes user commands. It emits the resulting raw byte stream via the Shell I/O Service. 
-- *Terminal Widget:* The client-side component renders the terminal interface. It receives the raw byte stream and parses the OSC sequences to reconstruct structured command blocks, subsequently updating the Command History Store. It also manages the terminal buffer and visual rendering through `xterm.js`.
-- *Command History Store:* This store maintains the state model by tracking a list of CommandBlock entities. Each block records the command text alongside its start and end markers within the terminal buffer. The store exposes a command history API, allowing other subsystems to query the structured terminal context, such as retrieving the last executed command or accessing a specific command block by its position in the terminal history.
+- *Terminal Widget:* The client-side component renders the terminal interface. It receives the raw byte stream, parses OSC sequences to reconstruct structured command blocks, and subsequently updates the Command History Store. It also manages the terminal buffer and visual rendering through `xterm.js`.
+- *Command History Store:* This store maintains the state model by tracking a list of CommandBlock entities. Each block records the command text along with its start and end markers in the terminal buffer. The store exposes a command history API, allowing other subsystems to query the structured terminal context, such as retrieving the last executed command or accessing a specific command block by its position in the terminal history.
 
-#pagebreak()
 *Shell Integration and Command History Construction*
 
 #diagram(
-  image("../figures/terminal-sequence.svg"),
+  image("../figures/terminal-sequence.pdf"),
   caption: [This sequence diagram shows how shell startup hooks and OSC markers let the terminal reconstruct discrete command blocks from a continuous byte stream. It explains the runtime path by which the system builds structured command history.],
   short-caption: [Command History Construction Sequence Diagram]
 ) <terminal-sequence>
 
-@terminal-sequence illustrates the interaction between these components during terminal startup and command execution. When the user opens a terminal, the Terminal Widget requests the Terminal Server to create a new terminal session. During this process, the Shell Integration component injects a shell configuration through startup arguments or environment variables. This shell configuration hooks into the command process of the shell and configures it to output escape sequences at command start and prompt start.
+@terminal-sequence illustrates the interaction between these components during terminal startup and command execution. When the user opens a terminal, the Terminal Widget requests the Terminal Server to create a new terminal session. During this process, the Shell Integration component injects a shell configuration through startup arguments or environment variables. This shell configuration hooks into the command process of the shell and configures it to output escape sequences at the start of each command and prompt.
 
 Once the shell has started, user commands entered in the Terminal Widget are forwarded via the Terminal Server to the shell. During command execution, the shell emits a `commandStart` control sequence to indicate the start of a command and a `promptStart` control sequence when the terminal prompt is emitted. We interpret this prompt event as the end of the current command execution. The Terminal Widget parses these sequences, reconstructs a CommandBlock from the observed command and its output, and stores the structured representation in the Command History Store.
+
+An annotated example of the emitted OSC sequences and the resulting command blocks is provided in @osc.
 
 
 == Terminal UI Enhancements 
@@ -151,6 +156,6 @@ Once the shell has started, user commands entered in the Terminal Widget are for
   short-caption: [Terminal Block Overlay]
 ) <terminal-hover-action-screenshot>
 
-@terminal-hover-action-screenshot shows the terminal block overlay in the standard terminal view. This overlay realizes #link(<fr5>)[FR5] and #link(<fr6>)[FR6] by grouping terminal output into command-specific blocks and exposing command-local quick actions. When the user hovers over any command block, the system reveals an overlay presenting quick actions: copy command text, scroll to the block's start, scroll to the block's end, and "Ask AI about Command," which opens an AI assistant session with the command block as context.
+@terminal-hover-action-screenshot shows the terminal block overlay in the standard terminal view. This overlay realizes #link(<fr5>)[FR5] and #link(<fr6>)[FR6] by grouping terminal output into command-specific blocks and exposing command-local quick actions. When the user hovers over the action button of any command block, the system reveals an overlay with quick actions: copy command text, scroll to the block's start, scroll to the block's end, and "Ask AI about Command," which opens an AI assistant session with the command block as context.
 
-This surface specifically serves users who operate primarily within the terminal and do not require the comprehensive assistant view or automatic task-based summarization.
+This surface is designed for users who primarily operate within the terminal and do not require the comprehensive assistant view or automatic task-based summarization.

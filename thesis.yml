@@ -17,22 +17,6 @@ abadTaskInterruptionSoftware2018:
     arxiv: '1805.05508'
     doi: 10.48550/arXiv.1805.05508
   abstract: Multitasking has always been an inherent part of software development and is known as the primary source of interruptions due to task switching in software development teams. Developing software involves a mix of analytical and creative work, and requires a significant load on brain functions, such as working memory and decision making. Thus, task switching in the context of software development imposes a cognitive load that causes software developers to lose focus and concentration while working thereby taking a toll on productivity. To investigate the disruptiveness of task switching and interruptions in software development projects, and to understand the reasons for and perceptions of the disruptiveness of task switching we used a mixed-methods approach including a longitudinal data analysis on 4,910 recorded tasks of 17 professional software developers, and a survey of 132 software developers. We found that, compared to task-specific factors (e.g. priority, level, and temporal stage), contextual factors such as interruption type (e.g. self/external), time of day, and task type and context are a more potent determinant of task switching disruptiveness in software development tasks. Furthermore, while most survey respondents believe external interruptions are more disruptive than self-interruptions, the results of our retrospective analysis reveals otherwise. We found that self-interruptions (i.e. voluntary task switchings) are more disruptive than external interruptions and have a negative effect on the performance of the interrupted tasks. Finally, we use the results of both studies to provide a set of comparative vulnerability and interaction pa erns which can be used as a mean to guide decision-making and forecasting the consequences of task switching in software development teams.
-article:
-  type: article
-  title: Effects of Task Load and Cognitive Abilities on Performance and Subjective Mental Workload in a Tracking Task
-  author:
-  - Valdehita, Susana
-  - Ramiro, Eva
-  - López-Higes, Ramón
-  - García, Jesús
-  date: 2012-10
-  page-range: 986-995
-  serial-number:
-    doi: 10.6018/analesps.28.3.156201
-  parent:
-    type: periodical
-    title: Anales de Psicologia
-    volume: 28
 bassnerIrisAIDrivenVirtual2024:
   type: article
   title:
@@ -94,6 +78,29 @@ bruggeObjectorientedSoftwareEngineering2014:
   parent:
     type: book
     title: Always Learning
+chenPassiveConsumptionActive2026:
+  type: article
+  title:
+    value: 'From {Passive Consumption} to {Active Interaction}: {Exploring Interactive LLM Scaffolding} to {Support Learning Engagement}'
+    short: From {Passive Consumption} to {Active Interaction}
+  author:
+  - Chen, Zixin
+  - Li, Haotian
+  - Liu, Zhe
+  - Qu, Huamin
+  - Xie, Xing
+  date: 2026-04-13
+  page-range: 1-6
+  url:
+    value: http://arxiv.org/abs/2603.07277
+    date: 2026-04-18
+  serial-number:
+    arxiv: '2603.07277'
+    doi: 10.1145/3772363.3798931
+  abstract: Large Language Models (LLMs) are increasingly used as learning companions, providing scaffolded explanations, hints, or step-by-step guidance. However, in current LLM-based learning scenarios, scaffolded content is primarily consumed passively, offering limited support for active learner engagement. Learning science research suggests that effective educational scaffolding depends not only on what support is provided, but also on how learners engage with it. In this work, we explore whether embedding lightweight interactive components into LLM-generated scaffolding responses can promote learning-oriented engagement and improve short-term learning outcomes. We evaluated this approach through a within-subjects laboratory study (N=8). Results provide initial evidence that interactive scaffolding increases learners' perceived engagement and attentional focus, while supporting short-term learning performance. We conclude with design implications for integrating interaction into LLM-generated scaffolding to support active learning engagement.
+  parent:
+    type: proceedings
+    title: Proceedings of the {Extended Abstracts} of the 2026 {CHI Conference} on {Human Factors} in {Computing Systems}
 dengRACONTEURKnowledgeableInsightful2025:
   type: article
   title:
@@ -435,6 +442,22 @@ TheiaIDEAINative:
   url:
     value: https://theia-ide.org/
     date: 2025-09-04
+valdehitaEffectsTaskLoad2012:
+  type: article
+  title: Effects of Task Load and Cognitive Abilities on Performance and Subjective Mental Workload in a Tracking Task
+  author:
+  - Valdehita, Susana
+  - Ramiro, Eva
+  - López-Higes, Ramón
+  - García, Jesús
+  date: 2012-10
+  page-range: 986-995
+  serial-number:
+    doi: 10.6018/analesps.28.3.156201
+  parent:
+    type: periodical
+    title: Anales de Psicologia
+    volume: 28
 WarpAgenticDevelopment:
   type: web
   title:

@@ -24,7 +24,7 @@ Among them, the Terminal Extension shown in @theia-terminal embeds a terminal in
 Despite their importance, terminals in modern IDEs suffer from usability challenges, as error messages are often cryptic, requiring specialized knowledge to interpret, which prolongs debugging and increases frustration for developers @beckerEffectiveApproachEnhancing2016.
 This is problematic for students with less experience and those from interdisciplinary backgrounds, who may be overwhelmed by the volume of work and discouraged by unclear feedback.
 
-Another usability issue arises after the user executes a command: terminals present prompts, commands, and program output as a continuous stream that users must parse manually. Especially in the presence of long build logs or multiple successive executions, students may struggle to determine which output belongs to which command and which parts are relevant for understanding a failure. This increases cognitive load and makes terminal-based debugging more difficult for inexperienced users @article.
+Another usability issue arises after the user executes a command: terminals present prompts, commands, and program output as a continuous stream that users must parse manually. Especially in the presence of long build logs or multiple successive executions, students may struggle to determine which output belongs to which command and which parts are relevant for understanding a failure. This increases cognitive load and makes terminal-based debugging more difficult for inexperienced users @valdehitaEffectsTaskLoad2012.
 
 The limited integration between the terminal and the IDE also disrupts workflow efficiency.
 Developers must constantly switch between command-line interactions and graphical interfaces, breaking concentration and task continuity @abadTaskInterruptionSoftware2018.
@@ -33,11 +33,11 @@ Developers must constantly switch between command-line interactions and graphica
 
 While prior research has explored using large language models to generate next-step hints for introductory programming exercises @roestNextStepHintGeneration2024 and explanations of malicious shell commands @dengRACONTEURKnowledgeableInsightful2025, educational research has examined AI assistance in IDE-integrated terminals less extensively.
 
-By automatically summarizing and explaining the error output of compilers and linters, students can more quickly identify their mistakes and gain more explicit guidance on how to resolve them @pankiewiczNavigatingCompilerErrors2024.
+By automatically summarizing and explaining the error output of compilers and linters, students can more quickly identify their mistakes and receive more explicit guidance on how to resolve them @pankiewiczNavigatingCompilerErrors2024.
 This feature also allows students to dedicate more time to solving the actual exercise rather than deciphering technical error messages, and reduces the occurrence of similar errors in the future @beckerEffectiveApproachEnhancing2016.
  
 To address these problems, modern terminal emulators like Warp #footnote[https://warp.dev] structure command output into distinct blocks and provide AI-based support for recent terminal output.
-Although such features can increase efficiency, educational settings benefit more from explanations that help students interpret errors than from automatic problem solving that bypasses that learning process.
+Although such features can increase efficiency, educational settings benefit more from explanations that help students interpret errors than from automatic problem solving that bypasses the learning process.
 
 == Objectives
 
@@ -47,15 +47,15 @@ We organize the thesis objectives in these steps:
 1. Establish a structured terminal state
 2. Automatically summarize build and runtime output
 3. Explain errors with suggested remediation steps
-4. Switch levels of abstraction and assistance
+4. Switch levels of abstraction
 
 === Establish a Structured Terminal State
 In the first stage, the system introduces shell integration to establish a structured terminal state that identifies command boundaries and associates outputs with their corresponding commands.
 This stage creates the architectural basis for later assistant features and provides a structured command history for future extensions.
 
 === Automatically Summarize Build and Runtime Output
-In the second stage, we implement the Terminal Assistant Core to analyze build and runtime output automatically and visualize summaries.
-The Summary Agent generates a compact summary for build output and runtime output shown in the terminal.
+In the second stage, we implement the Terminal Assistant Core to automatically analyze build and runtime output and visualize summaries.
+The Summary Agent generates a compact summary for build and runtime output shown in the terminal.
 Each summary highlights key information, such as error messages or success indicators, while filtering out verbose details.
 The assistant displays the summary together with access to the raw output so that students can compare the AI interpretation with the underlying execution log.
 
@@ -66,15 +66,14 @@ It also helps them learn to interpret the output of compilers and linters by dis
 In the next stage, we extend the Summary Agent to automatically detect errors in the output. The system displays each detected error in a structured format, along with guidance for resolution. 
 The goal is to support students in understanding the issue without revealing the complete solution to an exercise.
 
-The system displays each detected error as a structured item, including the file location, a description of the error, and a general hint for remediation.
+The system displays each detected error as a structured item, including the file location, a description of the error, and a general remediation hint.
 An "Open in Editor" button navigates the user to the corresponding file in the IDE editor window and highlights the faulty line, while a "Propose Fix" button reveals a more detailed hint to guide the student toward resolving the error independently.
 
-=== Switch Levels of Abstraction and Assistance
-This thesis also explores how configurable levels of abstraction and assistance could adapt support to different user needs.
-The abstraction level controls how much of the original terminal output the interface displays, while the assistance level controls the detail of the remediation steps.
-These configurations would allow the system to adjust how much information and guidance it exposes.
+=== Switch Levels of Abstraction
+This thesis also explores how configurable levels of abstraction could adapt the presentation of terminal information to different user needs.
+The abstraction level controls how much of the original terminal output the interface displays, which allows the system to adjust the amount of information it exposes to the user.
 
-Such a configuration could distinguish between transparency and pedagogical assistance. For beginners, a higher abstraction level may reduce cognitive overload by hiding low-level terminal details, while a lower assistance level can still preserve the learning process by limiting the system to explanations and hints instead of direct solutions. More experienced users, by contrast, may prefer a lower abstraction level with fuller access to raw output, combined with a higher assistance level that offers direct support to speed up debugging.
+Such a configuration could balance between transparency and cognitive load. For beginners, a higher abstraction level may reduce cognitive overload by hiding low-level terminal details. Conversely, experienced users may prefer a lower abstraction level with fuller access to raw output.
 
 == Outline
 The remainder of this thesis is structured as follows:

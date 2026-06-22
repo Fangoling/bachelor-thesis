@@ -1,17 +1,19 @@
 #import "/utils/todo.typ": TODO
 #import "/utils/diagram.typ": diagram
+#import "/utils/print_page_break.typ": print_page_break
 
+#print_page_break(print: true)
 = Requirements <requirements>
 
 We describe the requirements for the proposed system following the Object-Oriented Software Engineering methodology by Bruegge and Dutoit @bruggeObjectorientedSoftwareEngineering2014. We formulate these requirements in terms of system behavior and user needs. Derived from the problem statement and motivation outlined in @intro, these requirements serve as the basis for the system design and implementation described in subsequent chapters.
 
 == Overview
 
-The proposed system fulfills three primary objectives. First, we establish a structural foundation for the terminal by introducing command boundaries, enabling the environment to treat command executions and their outputs as discrete data objects. Second, we provide AI-powered assistance for students in teaching environments, allowing them to understand build failures and resolve errors without leaving the IDE. Third, we enhance terminal usability by introducing interactive UI features that leverage the structured command history.
+The proposed system fulfills three primary objectives. First, we establish a structural foundation for the terminal by introducing command boundaries, enabling the environment to treat command executions and their outputs as discrete data objects. Second, we provide AI-powered assistance for students in teaching environments, allowing them to understand build failures, and resolve errors without leaving the IDE. Third, we enhance terminal usability by introducing interactive UI features that leverage the structured command history.
 
 == Existing System
 
-The existing system consists of the built-in terminal extension within the Theia IDE, which embeds a terminal emulator and connects it to a shell process. This terminal presents shell output as an unstructured byte stream rendered into a character buffer. Currently, no command history API exists, and the system accesses the terminal output only as a flat text buffer. The environment possesses no intrinsic information regarding which lines belong to which command or where one command output ends and the next begins.
+The existing system consists of the built-in terminal extension within the Theia IDE, which embeds a terminal emulator and connects it to a shell process. This terminal presents shell output as an unstructured byte stream and renders it into a character buffer. Currently, there is no command history API, and the system accesses the terminal output only as a flat text buffer. The environment contains no intrinsic information regarding which lines belong to which command or where one command output ends and the next begins.
 
 Consequently, any AI feature that operates on terminal output must rely on a heuristic context window and force the language model to interpret the raw context. This approach introduces two systematic failure modes: the heuristic may omit relevant output when a command produces extensive logs, or it may include unrelated lines when multiple commands execute in close succession. In both scenarios, the resulting AI analysis becomes imprecise and unreliable.
 
@@ -35,8 +37,6 @@ We propose extending the Theia IDE with two cooperating subsystems. The shell in
 - *FR5 Visualize Command Boundaries:* The terminal shall visually mark the boundaries of individual commands to allow users to distinguish each command and its output at a glance. <fr5>
 - *FR6 Provide Command Block Actions:* The user shall be able to hover over a command's output block to access quick actions, including copying the command, scrolling to block boundaries, and opening an AI assistant session using the block as context. <fr6>
 
-#pagebreak()
-
 *AI Terminal Assistant*
 
 - *FR7 Generate Task Summary:* The system shall automatically generate an AI summary upon the completion of a build task or debug session, without requiring manual invocation. <fr7>
@@ -46,7 +46,7 @@ We propose extending the Theia IDE with two cooperating subsystems. The shell in
 - *FR11 Navigate to Error Location:* The user shall be able to navigate directly to the affected file and line in the editor by clicking an 'Open in Editor' button within the error entry. <fr11>
 - *FR12 Preserve Traceability to Raw Output:* The assistant shall provide access to the raw execution output that underlies the AI interpretation so users can verify the source of the summary. <fr12>
 - *FR13 Support Interactive Task I/O:* The system shall support direct propagation of input and output streams for interactive task executions before the command has completed. <fr13>
-- *FR14 Configure Assistance Modes:* The system shall support configurable assistance modes, allowing users to control how the assistant presents information within the terminal workflow. <fr14>
+- *FR14 Configure Abstraction Modes:* The system shall support configurable abstraction modes, allowing users to control how the assistant presents information within the terminal workflow. <fr14>
 
 === Quality Attributes
 
@@ -70,13 +70,13 @@ We present the system models for the proposed solution following the methodology
 
 *Scenario 1: Beginner Student Encounters a Build Error*
 
-A first-semester student opens the online IDE to work on a programming exercise. The student runs the exercise code, which results in a runtime failure. The terminal fills with the runtime output that the student cannot interpret. Automatically, the assistant view opens alongside the output, displaying a failure status indicator and a concise, plain-language summary of the error. Individual error cards appear below the summary. Each card identifies the affected file and line, explains the error type without assuming prior knowledge, and offers collapsed remediation steps that guide the student without revealing the direct solution. 
+A first-semester student opens the online IDE to work on a programming exercise. The student runs the exercise code, which results in a runtime failure. The terminal fills with the runtime output that the student cannot interpret. The assistant view opens automatically alongside the output, displaying a failure status indicator and a concise, plain-language summary of the error. Individual error cards appear below the summary. Each card identifies the affected file and line, explains the error type without assuming prior knowledge, and offers collapsed remediation steps that guide the student without revealing the direct solution. 
 
 Seeking to resolve the issue, the student clicks the navigation button. The system opens the corresponding file in the editor, moves the cursor to the exact line, and applies a visual decoration. To further understand the issue, the student expands the remediation steps and follows the instructions to inspect variable values using print statements. This guidance enables the student to comprehend the root cause and successfully fix the error.
 
 *Scenario 2: Advanced Student Works with Structured Command History*
 
-A student comfortable with the terminal runs build commands directly in the integrated terminal. The system automatically tracks these command blocks and marks them visually. The student navigates rapidly through extensive terminal output by scrolling to command boundaries and easily copies a previous command to modify and re-execute it. 
+A student comfortable with the terminal runs build commands directly in the integrated terminal. The system automatically tracks these command blocks and visually marks them. The student navigates rapidly through extensive terminal output by scrolling to command boundaries and easily copies a previous command to modify and re-execute it. 
 
 Upon encountering a build failure, the student hovers over the command block to access the quick action menu and opens an AI assistant session using the command output as context. The assistant view opens with an error summary and suggested remediation steps, which the student uses to inspect the error without requiring automatic summarization for every build or runtime output.
 
@@ -90,7 +90,7 @@ Upon encountering a build failure, the student hovers over the command block to 
 
 @use-case-diagram shows the interactions between the Student actor and the AI Terminal Assistant.
 
-The Student interacts with the AI Terminal Assistant to resolve errors. The student can inspect the raw build and runtime output or the output summary to determine the result of the last execution. When the last output indicates an error, the student can review the error explanation to determine the cause of the issue.
+The Student interacts with the AI Terminal Assistant to resolve errors. The student can inspect the raw build and runtime output or the output summary to determine the result of the last execution. When the last output indicates an error, the student reviews the error explanation to identify the cause.
 
 The student can then open the file with the error in the editor, which also navigates to the specific error line for detailed inspection, or expand the remediation steps to review the suggested guidance.
 
@@ -120,7 +120,7 @@ The #emph[ErrorDetail] also contains a #emph[CodeSnippet], which extracts the re
 
 The dynamic model in @dynamic-model describes the interaction flow through the AI Terminal Assistant, tracing the path from build and runtime output to error resolution.
 
-The flow begins when the user triggers exercise code and the system produces build or runtime output in the terminal. Once the output is available, the system evaluates the resulting terminal output. If the output contains an error, the system analyzes the relevant execution context and constructs a structured error explanation.
+The flow begins when the user triggers exercise code, and the system produces build or runtime output in the terminal. Once the output is available, the system evaluates the resulting terminal output. If the output contains an error, the system analyzes the relevant execution context and constructs a structured error explanation.
 
 Subsequently, the assistant view updates automatically. It displays the status indicator and the summary text. For each detected error, the view renders an error card containing the affected file name, line number, and a plain-language explanation. The system keeps specific remediation steps collapsed by default to encourage independent problem-solving.
 

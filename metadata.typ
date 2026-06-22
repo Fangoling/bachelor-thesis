@@ -3,11 +3,11 @@
 #let titleGerman = "Verbesserung der Terminal-Benutzbarkeit in modernen IDEs durch KI-gestützte Interaktion"
 #let degree = "Bachelor"
 #let program = "Informatics"
-#let supervisor = "Prof. Dr. Stephan Krusche"
-#let advisors = ("Dr. Jonas Helming", "Matthias Linhuber, M.Sc.")
+#let examiner = "Prof. Dr. Stephan Krusche"
+#let supervisors = ("Dr. Jonas Helming", "Matthias Linhuber, M.Sc.")
 #let author = "Fangxing Liu"
 #let birthdate = datetime(day: 08, month: 07, year: 2004) // only necessary for registration certificate
 #let startDate = datetime(day: 20, month: 12, year: 2025)
 #let submissionDate = datetime(day: 20, month: 4, year: 2026)
-#let presentationDate = datetime(day: 8, month: 5, year: 2026)
-#let feedbacklogSubmissionDate = datetime.today()
+#let presentationDate = datetime(day: 13, month: 5, year: 2026)
+#let feedbacklogSubmissionDate = datetime(day: 22, month: 5, year: 2026) 

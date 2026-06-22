@@ -36,4 +36,4 @@ What You Need to Do
 */
 
 In preparing this thesis, I utilized Grammarly for grammar and style correction across all sections, ensuring clarity and coherence in my writing.
-I used OpenAI models through Codex and Google Gemini models to generate initial drafts and expand on ideas. Additionally, I used Claude Models by Anthropic to generate code snippets for the developed functionality. I have carefully checked all texts created with these tools to ensure that they are correct and make sense.
+I used OpenAI models through Codex and Google Gemini models to generate initial drafts and expand on ideas. Additionally, I used Anthropic's Claude models to generate code snippets for the developed functionality. I have carefully checked all texts created with these tools to ensure that they are correct and make sense.

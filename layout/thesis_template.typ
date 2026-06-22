@@ -13,8 +13,8 @@
   titleGerman: "",
   degree: "",
   program: "",
-  supervisor: "",
-  advisors: (),
+  examiner: "",
+  supervisors: (),
   author: "",
   startDate: datetime,
   submissionDate: datetime,
@@ -39,8 +39,8 @@
     titleGerman: titleGerman,
     degree: degree,
     program: program,
-    supervisor: supervisor,
-    advisors: advisors,
+    examiner: examiner,
+    supervisors: supervisors,
     author: author,
     startDate: startDate,
     submissionDate: submissionDate
@@ -84,15 +84,20 @@
   show heading: set text(font: fonts.body)
   set heading(numbering: "1.1")
   // Reference first-level headings as "chapters"
+  set heading(supplement: [Chapter])
   show ref: it => {
     let el = it.element
     if el != none and el.func() == heading and el.level == 1 {
       link(
         el.location(),
-        [Chapter #numbering(
-          el.numbering,
-          ..counter(heading).at(el.location())
-        )]
+        if el.numbering != none {
+          [#el.supplement #numbering(
+            el.numbering,
+            ..counter(heading).at(el.location())
+          )]
+        } else {
+          el.body
+        }
       )
     } else {
       it
@@ -160,11 +165,25 @@
 
   // Appendixes.
   pagebreak()
-  {
-    set heading(numbering: "A.1", supplement: [Appendix])
-    counter(heading).update(0)
-    include("/layout/appendix_a.typ")
+  
+  counter(heading).update(0)
+  set heading(numbering: "A.1", supplement: [Appendix])
+  show heading: it => {
+    if it.level == 1 and it.numbering != none {
+      [#it.supplement #counter(heading).display():]
+    } else if it.numbering != none {
+      [#counter(heading).display().]
+    }
+
+    h(0.3em)
+    it.body
+    parbreak()
   }
+
+  include "/layout/appendix_a.typ"
+
+  pagebreak()
+  include "/layout/appendix_b.typ"
 
   pagebreak()
   bibliography("/thesis.yml")
